@@ -1,0 +1,45 @@
+{
+  "_args": [
+    [
+      "smartlook-react-native-wrapper@0.28.0",
+      "/Users/Development"
+    ]
+  ],
+  "_from": "smartlook-react-native-wrapper@0.28.0",
+  "_id": "smartlook-react-native-wrapper@0.28.0",
+  "_inBundle": false,
+  "_integrity": "sha512-MHzZjjZt79V5Z/8Qa6LQSlPrftOOMuMtIy1LEbLsek6T9e3yvFOuXgmiR6WSStR+ALWiM4wzBVR56HvA4djTiA==",
+  "_location": "/smartlook-react-native-wrapper",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "smartlook-react-native-wrapper@0.28.0",
+    "name": "smartlook-react-native-wrapper",
+    "escapedName": "smartlook-react-native-wrapper",
+    "rawSpec": "0.28.0",
+    "saveSpec": null,
+    "fetchSpec": "0.28.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/smartlook-react-native-wrapper/-/smartlook-react-native-wrapper-0.28.0.tgz",
+  "_spec": "0.28.0",
+  "_where": "/Users/Development",
+  "author": "",
+  "description": "React native wrapper for Smartlook SDK",
+  "homepage": "https://www.smartlook.com/",
+  "keywords": [
+    "react-native",
+    "smartlook",
+    "android",
+    "ios",
+    "recording",
+    "analytics"
+  ],
+  "license": "",
+  "main": "index.js",
+  "name": "smartlook-react-native-wrapper",
+  "version": "0.28.0"
+}
