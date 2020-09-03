@@ -3,24 +3,22 @@ import { jsOnYamuGotItClicked, jsOnYamuHeartClicked, jsAddYamuMainMenu } from '.
 import { jsShowYamuAssistant, jsHideYamuAssistant, jsToggleYamuAssistant, jsOnClickYamuAssistantShoppingTab, jsOnClickYamuAssistantOffersTab, jsAddYamuAssistant } from './assistant';
 
 function injectWebViewJsForYamu() {
-
   let jsCode = `
-    ${ jsIsPartnerDomain() } 
-    ${ jsOnYamuGotItClicked() } 
-    ${ jsOnYamuHeartClicked() }
-    ${ jsAddYamuMainMenu() }
-    ${ jsShowYamuAssistant() }
-    ${ jsHideYamuAssistant() }
-    ${ jsToggleYamuAssistant() }
-    ${ jsOnClickYamuAssistantShoppingTab() }
-    ${ jsOnClickYamuAssistantOffersTab() }
-    ${ jsAddYamuAssistant() }
-    ${ jsAddYamuUI() }
-    ${ jsOnYamuMessage() }
-    ${ jsAddYamuMessageHandler() }
-    ${ jsInjectCodesForYamu() }
+    ${ jsIsPartnerDomain()} 
+    ${ jsOnYamuGotItClicked()} 
+    ${ jsOnYamuHeartClicked()}
+    ${ jsAddYamuMainMenu()}
+    ${ jsShowYamuAssistant()}
+    ${ jsHideYamuAssistant()}
+    ${ jsToggleYamuAssistant()}
+    ${ jsOnClickYamuAssistantShoppingTab()}
+    ${ jsOnClickYamuAssistantOffersTab()}
+    ${ jsAddYamuAssistant()}
+    ${ jsAddYamuUI()}
+    ${ jsOnYamuMessage()}
+    ${ jsAddYamuMessageHandler()}
+    ${ jsInjectCodesForYamu()}
   `;
-
   return jsCode;
 }
 

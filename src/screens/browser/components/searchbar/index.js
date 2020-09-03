@@ -418,6 +418,7 @@ class SearchBar extends Component {
                     onSubmitEditing={this._onSearchSubmit}
                     onChangeText={this._onTextInputTextChanged}
                     onFocus={this._onTextInputFocused}
+                    selectTextOnFocus={true}
                     onEndEditing={this._onTextInputEditEnded}
                     value={this.state.isSearchUrl ? this.state.searchUrl : this.state.searchText}
                   />
@@ -472,7 +473,10 @@ class SearchBar extends Component {
           </View>
           {(this.state.isEditing && searchTextInputValue != '') ? (
             <TouchableOpacity style={styles.btnSearch} onPress={this._onDeleteTextInput}>
-              <Image style={{ width: 22, height: 22, resizeMode: 'contain', }} source={R.images.icon_input_delete} />
+              {this.props.isIncognito ?
+                <Image style={{ width: 22, height: 22, resizeMode: 'contain', }} source={R.images.icon_input_delete_white} />
+                :
+                <Image style={{ width: 22, height: 22, resizeMode: 'contain', }} source={R.images.icon_input_delete} />}
             </TouchableOpacity>
           ) : null}
           <TouchableOpacity style={styles.btnSignal} onPress={this._onPressSignal} >
