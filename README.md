@@ -6,3 +6,4 @@ This app includes some functions as follows
 - Landscape and Portrait
 - Google Search Engine
 - Webview control
+- Autocomplete
