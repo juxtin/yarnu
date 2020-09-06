@@ -15,7 +15,6 @@ const images = {
   icon_incognito_inactive: require('./images/icon_incognito_inactive.png'),
   icon_incognito_white: require('./images/icon_incognito_white.png'),
   icon_input_delete: require('./images/icon_input_delete.png'),
-  icon_input_delete_white: require('./images/icon_input_delete_white.png'),
   icon_leftarrow_black: require('./images/icon_leftarrow_black.png'),
   icon_more_active: require('./images/icon_more_active.png'),
   icon_more_inactive: require('./images/icon_more_inactive.png'),

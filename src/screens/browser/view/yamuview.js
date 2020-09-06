@@ -28,8 +28,6 @@ import SearchBar from '../components/searchbar';
 import injectWebViewJsForUtility from './inject/utility';
 import { injectWebViewJsForGoogle, injectWebViewJsForGoogleResult } from './inject/google';
 import injectWebViewJsForYamu from './inject/yamu';
-import injectYamuToggleMenu from './inject/yamu/togglemenu';
-// import webviewscroll from './webviewscroll';
 
 import R from 'res/R';
 import styles from './yamuviewstyles';
@@ -44,7 +42,6 @@ class YamuView extends Component {
     var protocol = pathArray[0];
     var isHttp = protocol.toLowerCase() === "http:" || protocol.toLowerCase() === "https:"
 
-
     this.state = {
       url: isHttp ? searchTerm : getGoogleSearchAPI(this.props.searchRegion, this.props.safeSearch) + encodeURIComponent(searchTerm),
       searchText: searchTerm,
@@ -55,26 +52,22 @@ class YamuView extends Component {
       loadingStep: 0,
       showOptionsModal: false,
       showAddFavoriteModal: false,
-      scrollDirection: 'up',
-      urlIncludeGoogle: false
     };
 
     this.webView = null;
     this.searchBar = React.createRef();
     this.currentTitle = '';
     this.currentUrl = '';
-    this.scrollPosition = 0;
-
   }
 
   // methods
   search = (searchText) => {
     var url = searchText;
-    if (!searchText.toLowerCase().includes("http://") && !searchText.toLowerCase().includes("https://")) {
+    if(!searchText.toLowerCase().includes("http://") && !searchText.toLowerCase().includes("https://")) {
       url = getGoogleSearchAPI(this.props.searchRegion, this.props.safeSearch) + encodeURIComponent(searchText);
     }
 
-    if (url != this.state.url) {
+    if(url != this.state.url) {
       this.setState({ url: url });
     } else {
       this.reload();
@@ -86,7 +79,7 @@ class YamuView extends Component {
   }
 
   reload = () => {
-    if (this.webView != null) {
+    if(this.webView != null) {
       this.webView.reload();
     }
   }
@@ -105,8 +98,8 @@ class YamuView extends Component {
   addHistory(title, url) {
     // check if already added
     let historyArray = [...this.props.arrayHistory];
-    if (historyArray.length > 0) {
-      if (historyArray[historyArray.length - 1].url == url) {
+    if(historyArray.length > 0) {
+      if(historyArray[historyArray.length - 1].url == url) {
         return;
       }
     }
@@ -163,7 +156,7 @@ class YamuView extends Component {
       showOptionsModal: false,
     });
   };
-
+  
   _onGoBackFromOptions = (type, data) => {
     if (type === 'url') {
       this._navigationWith(data)
@@ -180,9 +173,9 @@ class YamuView extends Component {
   // web view events
   _onLoadStart = e => {
     const { nativeEvent } = e;
-
+    
     // if not google, add Yamu UI
-    if (nativeEvent.url.includes('.google.')) {
+    if(nativeEvent.url.includes('.google.')) {
       this.webView.injectJavaScript(injectWebViewJsForGoogle());
     } else {
       //this.webView.injectJavaScript(injectWebViewJsForYamu());
@@ -193,37 +186,14 @@ class YamuView extends Component {
     }
   };
 
-  _onLoadYamuMenu = e => {
-    const { nativeEvent } = e;
-
-    // if not google, add Yamu UI
-    if (nativeEvent.url.includes('.google.')) {
-      this.webView.injectJavaScript(injectWebViewJsForGoogle());
-    } else {
-      if (this.state.scrollDirection == 'down' || this.scrollPosition == 0) {
-        this.webView.injectJavaScript(injectWebViewJsForYamu());
-      } else {
-        this.webView.injectJavaScript(injectWebViewJsForGoogle());
-      }
-    }
-  };
-
   _onLoadProgress = e => {
     const { nativeEvent } = e;
-
+    
     // if not google, add Yamu UI
-    if (nativeEvent.url.includes('.google.')) {
+    if(nativeEvent.url.includes('.google.')) {
       this.webView.injectJavaScript(injectWebViewJsForGoogle());
-
-      this.setState({
-        urlIncludeGoogle: false
-      });
     } else {
       this.webView.injectJavaScript(injectWebViewJsForYamu());
-
-      this.setState({
-        urlIncludeGoogle: true
-      });
     }
 
     this.setState({
@@ -236,7 +206,7 @@ class YamuView extends Component {
       }
 
       if (global.selectedTabIndex != -1) { // add tab
-        captureRef(this.refs.viewShot, { format: 'png', quality: 0.1 }).then(res => {
+        captureRef(this.refs.viewShot, {format: 'png', quality: 0.1}).then(res => {
           RNFetchBlob.fs.readFile(res, 'base64').then((base64data) => {
             let base64Image = `data:image/png;base64,${base64data}`;
             this.addTab(this.currentTitle, this.currentUrl, base64Image)
@@ -255,7 +225,7 @@ class YamuView extends Component {
     this.webView.injectJavaScript(injectWebViewJsForUtility());
 
     // if google, inject google result
-    if (nativeEvent.url.includes('.google.')) {
+    if(nativeEvent.url.includes('.google.')) {
       this.webView.injectJavaScript(injectWebViewJsForGoogleResult());
     }
   };
@@ -271,9 +241,9 @@ class YamuView extends Component {
   _renderLoadError = e => {
     return (
       <View style={styles.webviewError}>
-        <Image style={styles.webviewErrorLogo} source={R.images.icon_badmood_red} />
-        <Text style={styles.webviewErrorTitle}>This site can't be reached</Text>
-        <Text style={styles.webviewErrorDescription}>The server could not be found or could not be reached for now. Please try again.</Text>
+          <Image style={styles.webviewErrorLogo} source={R.images.icon_badmood_red} />
+          <Text style={styles.webviewErrorTitle}>This site can't be reached</Text>
+          <Text style={styles.webviewErrorDescription}>The server could not be found or could not be reached for now. Please try again.</Text>
       </View>
     );
   };
@@ -291,59 +261,31 @@ class YamuView extends Component {
   }
 
   _onWebViewMessage = e => {
-    var messagedata = JSON.parse(e.nativeEvent.data);
-
-    this.currentTitle = messagedata.title;
-
-    this.setState({
-      scrollDirection: messagedata.scrolling,
-    });
+    this.currentTitle = e.nativeEvent.data;
     //console.log("[YamuView] _onWebViewMessage() -> currentTitle: " + this.currentTitle);
   }
 
-  _onWebViewScroll = e => {
-    // const { nativeEvent } = e;
-    var currentScrollPosition = e.nativeEvent.contentOffset.y;
-    this.setState({
-      scrollDirection: 'up',
-    });
-    if ((this.scrollPosition > currentScrollPosition) || (currentScrollPosition == 0)) {
-      this.setState({
-        scrollDirection: 'up',
-      });
-      this.webView.injectJavaScript(injectYamuToggleMenu("up"));
-    } else {
-      this.setState({
-        scrollDirection: 'down',
-      });
-      this.webView.injectJavaScript(injectYamuToggleMenu("down"));
-    }
-
-    this.scrollPosition = currentScrollPosition;
-
-  }
-
   // menu handlers
-  _onGoBackward = () => {
-    if (this.webView != null) {
+  _onGoBackward = () =>  {
+    if(this.webView != null) {
       this.webView.goBack();
     }
   }
 
-  _onGoForward = () => {
-    if (this.webView != null) {
+  _onGoForward = () =>  {
+    if(this.webView != null) {
       this.webView.goForward();
     }
   }
 
-  _onShowYamuAssistant = () => {
+  _onShowYamuAssistant = () =>  {
     //console.log("[YamuView] _onShowYamuAssistant()");
-    if (this.webView != null) {
+    if(this.webView != null) {
       this.webView.postMessage("showYamuAssist");
     }
   }
 
-  _onShowOptionsModal = () => {
+  _onShowOptionsModal = () =>  {
     this.setState({
       showOptionsModal: true,
     });
@@ -406,7 +348,7 @@ class YamuView extends Component {
             "com.apple.reminders.RemindersEditorExtension", //Reminders
             "com.apple.mobilenotes.SharingExtension", // Notes
             "com.apple.mobileslideshow.StreamShareService", // iCloud Photo Sharing - This also does nothing :{
-
+            
             // Not supported
             "com.linkedin.LinkedIn.ShareExtension", //LinkedIn
             "pinterest.ShareExtension", //Pinterest
@@ -423,24 +365,14 @@ class YamuView extends Component {
     }
   };
 
-
   render() {
-
     //console.log("[YamuView] render()");
     return (
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <TouchableWithoutFeedback onPress={this._onPressScreen}>
           <View style={styles.rootWrapper}>
-            {
-              (this.state.scrollDirection == 'up' || this.scrollPosition == 0) ? (
-                <SearchBar ref={(input) => { this.searchBar = input; }} searchText={this.state.searchText} progressStep={this.state.loadingStep} onSearch={this.search} onSignal={this.navigateToOffersScreen} onReload={this.reload} searchRegion={this.props.searchRegion} autocomplete={this.props.autocomplete} isIncognito={this.props.isIncognito} />
-              )
-                :
-                (
-                  <Text style={styles.titleTop}>{this.currentTitle}</Text>
-                )
-            }
-            <ViewShot style={{ flex: 1, }} ref="viewShot" options={{ format: "jpg", quality: 0.5 }}>
+            <SearchBar ref={(input) => { this.searchBar = input; }} searchText={this.state.searchText} progressStep={this.state.loadingStep} onSearch={this.search} onSignal={this.navigateToOffersScreen} onReload={this.reload} searchRegion={this.props.searchRegion} autocomplete={this.props.autocomplete} isIncognito={this.props.isIncognito}/>
+            <ViewShot style={{flex: 1, }} ref="viewShot" options={{ format: "jpg", quality: 0.5 }}>
               <WebView
                 ref={r => (this.webView = r)}
                 useWebKit={true}
@@ -455,39 +387,31 @@ class YamuView extends Component {
                 onNavigationStateChange={this._onWebViewNavigationStateChanged.bind(this)}
                 onError={this._onLoadError}
                 renderError={this._renderLoadError}
-                onScroll={this._onWebViewScroll}
                 onMessage={this._onWebViewMessage}
                 incognito={this.props.isIncognito}
-                scrollEnabled={true}
               />
             </ViewShot>
-            {(this.state.scrollDirection == 'up' || this.scrollPosition == 0) ? (
-              <View style={styles.menuBar}>
-                <TouchableOpacity style={styles.menuBarItem} disabled={this.state.canBackward ? false : true} onPress={this._onGoBackward}>
-                  <Svg width='20' height='20'>
-                    <Polyline points='18,0 3,10 18,20' stroke={this.state.canBackward ? 'black' : 'lightgray'} strokeWidth='1' />
-                  </Svg>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuBarItem} disabled={this.state.canForward ? false : true} onPress={this._onGoForward}>
-                  <Svg width='20' height='20'>
-                    <Polyline points='2,0 17,10 2,20' stroke={this.state.canForward ? 'black' : 'lightgray'} strokeWidth='1' />
-                  </Svg>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuBarItemYamuAssist} onPress={() => { this.props.navigation.navigate('BrowserHome') }}>
-                  <Text style={styles.titleText}>Y</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuBarItem, { width: 25, height: 25, borderColor: 'black', borderWidth: 1, borderRadius: 5, alignItems: 'center', justifyContent: 'center', }} onPress={this._pressHeaderItem.bind(this, 3)}>
-                  <Text>{this.props.arrayTab.length > 0 ? this.props.arrayTab.length : ''}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuBarItem} onPress={this._onShowOptionsModal}>
-                  <Text style={styles.titleText}>...</Text>
-                </TouchableOpacity>
-              </View>
-            ) :
-              (
-                null
-              )
-            }
+            <View style={styles.menuBar}>
+              <TouchableOpacity style={styles.menuBarItem} disabled={this.state.canBackward ? false : true} onPress={this._onGoBackward}>
+                <Svg width='20' height='20'>
+                  <Polyline points='18,0 3,10 18,20' stroke={this.state.canBackward ? 'black' : 'lightgray'} strokeWidth='1'/>
+                </Svg>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuBarItem} disabled={this.state.canForward ? false : true} onPress={this._onGoForward}>
+                <Svg width='20' height='20'>
+                  <Polyline points='2,0 17,10 2,20' stroke={this.state.canForward ? 'black' : 'lightgray'} strokeWidth='1'/>
+                </Svg>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuBarItemYamuAssist}  onPress={() => {this.props.navigation.navigate('BrowserHome')}}>
+                <Text style={styles.titleText}>Y</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuBarItem, {width:25, height:25, borderColor:'black', borderWidth:1, borderRadius:5, alignItems:'center', justifyContent:'center',}} onPress={this._pressHeaderItem.bind(this, 3)}>
+                <Text>{this.props.arrayTab.length > 0 ? this.props.arrayTab.length : ''}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuBarItem} onPress={this._onShowOptionsModal}>
+                <Text style={styles.titleText}>...</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </TouchableWithoutFeedback>
         {this.state.showOptionsModal ? (

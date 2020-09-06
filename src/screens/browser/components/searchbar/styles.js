@@ -139,6 +139,6 @@ export default StyleSheet.create({
     flex: 1,
     color: 'black',
     height: 32,
-    marginRight: 5
+    marginRight: 5,
   },
 });

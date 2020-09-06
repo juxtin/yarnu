@@ -1,4 +1,4 @@
-export function jsShowYamuAssistant() {
+export function jsShowYamuAssistant() {    
     let jsCode = `
         function showYamuAssistantDiv() {
             var divAssistant = document.getElementById('divYamuAssistant');
@@ -9,7 +9,7 @@ export function jsShowYamuAssistant() {
     return jsCode;
 }
 
-export function jsHideYamuAssistant() {
+export function jsHideYamuAssistant() {    
     let jsCode = `
         function hideYamuAssistantDiv() {
             var divAssistant = document.getElementById('divYamuAssistant');
@@ -20,7 +20,7 @@ export function jsHideYamuAssistant() {
     return jsCode;
 }
 
-export function jsToggleYamuAssistant() {
+export function jsToggleYamuAssistant() {    
     let jsCode = `
         function toggleYamuAssistantDiv() {
             var divAssistant = document.getElementById('divYamuAssistant');
@@ -35,7 +35,7 @@ export function jsToggleYamuAssistant() {
     return jsCode;
 }
 
-export function jsOnClickYamuAssistantShoppingTab() {
+export function jsOnClickYamuAssistantShoppingTab() {    
     let jsCode = `
         function onClickYamuAssistantShoppingTab() {
         if(!isPartnerDomain()) {
@@ -70,7 +70,7 @@ export function jsOnClickYamuAssistantShoppingTab() {
     return jsCode;
 }
 
-export function jsOnClickYamuAssistantOffersTab() {
+export function jsOnClickYamuAssistantOffersTab() {    
     let jsCode = `
         function onClickYamuAssistantOffersTab() {
         var tdShoppingTab = document.getElementById('tdYamuAssistantTabShopping');
@@ -200,7 +200,7 @@ export function jsAddYamuAssistant() {
             "          top: 10px;" +
             "          bottom: 5px;" +
             "          background:#d8d8d8;" +
-            "          border-radius:1.5vw;" +
+            "          border-radius:5px;" +
             "          vertical-align: bottom;" +
             "      }" +
             "      #tableYamuAssistantOffersItems td:first-child > div {" +
@@ -225,51 +225,51 @@ export function jsAddYamuAssistant() {
             "          bottom: 0;" +
             "          background-color: black;" +
             "          width: 100%;" +
-            "          height: 4.5vw;" +
+            "          height: 20px;" +
             "          text-align: center;" +
-            "          border-bottom-left-radius:1.5vw;" +
-            "          border-bottom-right-radius:1.5vw;" +
+            "          border-bottom-left-radius:5px;" +
+            "          border-bottom-right-radius:5px;" +
             "      }" +
             "      #tableYamuAssistantOffersItems td > div > div.link > a {" +
             "          color: white;" +
-            "          font-size: 2.3vw;" +
+            "          font-size: 10px;" +
             "          text-decoration: none;" +
             "      }" +
             "  </style>" +
-            "  <table id='tableYamuAssistantTitleBar' style='width:100%;height:13vw;margin:0;background:black;color:white;border-collapse:collapse'>" +
+            "  <table id='tableYamuAssistantTitleBar' style='width:100%;height:60px;margin:0;background:black;color:white;border-collapse:collapse'>" +
             "      <tbody>" +
-            "          <tr style='font-size:4vw;cursor:pointer'>" +
-            "              <td style='width:10vw;padding:0;text-align:center;font-size:4.5vw' onclick='toggleYamuAssistantDiv()'>&lt;</td>" +
+            "          <tr style='font-size:12px;cursor:pointer'>" +
+            "              <td style='width:45px;padding:0;text-align:center;font-size:20px' onclick='toggleYamuAssistantDiv()'>&lt;</td>" +
             "              <td style='padding:0;text-align:center'>YOUR YAMU ASSISTANT</td>" +
-            "              <td style='width:10vw;padding:0;text-align:center'>" +
-            "                  <div style='text-align:center;vertical-align:middle;color:white;width:5vw;height:5vw;line-height:5vw;border:1px solid white;border-radius:50%;font-size:3.5vw'>Y</div>" +
+            "              <td style='width:45px;padding:0;text-align:center'>" +
+            "                  <div style='text-align:center;vertical-align:middle;color:white;width:25px;height:25px;line-height:25px;border:1px solid white;border-radius:50%;font-size:15px'>Y</div>" +
             "              </td>" +
             "          </tr>" +
             "      </tbody>" +
             "  </table>" +
-            "  <table id='tableYamuAssistantTabBar' style='width:100%;height:8vw;margin:0;border-collapse:collapse'>" +
+            "  <table id='tableYamuAssistantTabBar' style='width:100%;height:35px;margin:0;border-collapse:collapse'>" +
             "      <tbody>" +
-            "          <tr style='font-size:3.2vw;cursor:pointer;'>" +
+            "          <tr style='font-size:12px;cursor:pointer'>" +
             "              <td id='tdYamuAssistantTabShopping' class='inactive' onclick='onClickYamuAssistantShoppingTab()'>SHOPPING ASSISTANT</td>" +
             "              <td id='tdYamuAssistantTabOffers' class='inactive' onclick='onClickYamuAssistantOffersTab()'>YAMU OFFERS&nbsp;&nbsp;&nbsp;&nbsp;4</td>" +
             "          </tr>" +
             "      </tbody>" +
             "  </table>" +
             "  <div id='divYamuAssistantShopping' style='display:none'>" +
-            "      <div id='divYamuAssistantSuggestsTitle' style='display:inline-block;margin:15px 0px 1.2vw 15px;padding:10px 1.2vw;background:black;border-radius:1.25vw;color:white;font-size:12px;cursor:pointer'>" +
+            "      <div id='divYamuAssistantSuggestsTitle' style='display:inline-block;margin:15px 0px 5px 15px;padding:10px 5px;background:black;border-radius:5px;color:white;font-size:12px;cursor:pointer'>" +
             "          <span>BASED ON YOUR SETTING WE SUGGESTS</span>" +
             "      </div>" +
-            "      <div id='divYamuAssistantSuggestsMenu' style='display:block;margin:5px 0 1.2vw 15px'>" +
-            "          <div id='divYamuAssitantSuggestsMenuXL' style='display:inline-block;margin:0;padding:10px 1.2vw;background:black;border-radius:1.25vw;color:white;font-size:10px;cursor:pointer'>" +
+            "      <div id='divYamuAssistantSuggestsMenu' style='display:block;margin:5px 0 5px 15px'>" +
+            "          <div id='divYamuAssitantSuggestsMenuXL' style='display:inline-block;margin:0;padding:10px 5px;background:black;border-radius:5px;color:white;font-size:10px;cursor:pointer'>" +
             "              <span>XL</span>" +
             "          </div>" +
-            "          <div id='divYamuAssitantSuggestsMenuBlack' style='display:inline-block;margin:0 0 0 1.2vw;padding:10px 1.2vw;background:black;border-radius:1.25vw;color:white;font-size:10px;cursor:pointer'>" +
+            "          <div id='divYamuAssitantSuggestsMenuBlack' style='display:inline-block;margin:0 0 0 5px;padding:10px 5px;background:black;border-radius:5px;color:white;font-size:10px;cursor:pointer'>" +
             "              <span>BLACK</span>" +
             "          </div>" +
-            "          <div id='divYamuAssitantSuggestsMenuPrice' style='display:inline-block;margin:0 0 0 1.2vw;padding:10px 1.2vw;background:black;border-radius:1.25vw;color:white;font-size:10px;cursor:pointer'>" +
+            "          <div id='divYamuAssitantSuggestsMenuPrice' style='display:inline-block;margin:0 0 0 5px;padding:10px 5px;background:black;border-radius:5px;color:white;font-size:10px;cursor:pointer'>" +
             "              <span>PRICE: 0 - 59&pound;</span>" +
             "          </div>" +
-            "          <div id='divYamuAssitantSuggestsMenuSettings' style='display:inline-block;margin:0 0 0 1.2vw;padding:10px 1.2vw;border:1px solid white;border-radius:1.25vw;color:white;font-size:10px;cursor:pointer'>" +
+            "          <div id='divYamuAssitantSuggestsMenuSettings' style='display:inline-block;margin:0 0 0 5px;padding:10px 5px;border:1px solid white;border-radius:5px;color:white;font-size:10px;cursor:pointer'>" +
             "              <span>Change Settings</span>" +
             "          </div>" +
             "      </div>" +
@@ -291,7 +291,7 @@ export function jsAddYamuAssistant() {
             "      </table>" +
             "  </div>" +
             "  <div id='divYamuAssistantOffers' style='display:none'>" +
-            "      <table id='tableYamuAssistantOffersItems' style='width:100%; margin-top: 6vw;'>" +
+            "      <table id='tableYamuAssistantOffersItems' style='width:100%'>" +
             "          <tbody>" +
             "              <tr>" +
             "                  <td><div><div class='link'><a href='http://www.asos.com'>Asos</a></div></div></td>" +
@@ -301,10 +301,10 @@ export function jsAddYamuAssistant() {
             "              </tr>" +
             "          </tbody>" +
             "      </table>" +
-            "      <div id='divYamuAssistantOffersSignUp' style='display:none;width:100vw;margin-top: 6vw; font-size:2.8vw;color:#72c500;text-align:center'>" +
+            "      <div id='divYamuAssistantOffersSignUp' style='display:none;width:100%;font-size:10px;color:#72c500;text-align:center'>" +
             "          <p style='margin:5px 0'>Companies we need your love!</p>" +
             "          <p>Join free today and help support local social impact<br/>projects that matter to your customers.</p>" +
-            "          <button style='margin:2.5vw 0;width:23vw;height:7vw;background:#72c500;color:white;font-size:3vw;border:none;border-radius:1.2vw'>SIGN UP</button>" +
+            "          <button style='margin:10px 0;width:80px;height:25px;background:#72c500;color:white;font-size:12px;border:none;border-radius:5px'>SIGN UP</button>" +
             "      </div>" +
             "  </div>" +
             "</div>";
@@ -330,4 +330,4 @@ export function jsAddYamuAssistant() {
     `;
 
     return jsCode;
-}
+  }

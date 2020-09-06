@@ -35,13 +35,6 @@ export default StyleSheet.create({
     width: 100,
     paddingRight: 12
   },
-  titleTop: {
-    flexDirection: 'row',
-    width: '100%',
-    height: 20,
-    textAlign: 'center',
-    // marginVertical: 15,
-  },
   progressStyle: {
     width: '100%',
     paddingLeft: 5,

@@ -1,7 +1,7 @@
 export function injectWebViewJsForGoogle() {
   let jsCode = `
-    ${ jsRemoveGoogleTitleAndSearchBar()}
-    ${ jsInjectCodesForGoogle()}
+    ${ jsRemoveGoogleTitleAndSearchBar() }
+    ${ jsInjectCodesForGoogle() }
   `;
 
   return jsCode;
@@ -35,7 +35,7 @@ function jsRemoveGoogleTitleAndSearchBar() {
       }
     };
   `;
-
+  
   return jsCode;
 }
 
@@ -53,8 +53,8 @@ function jsInjectCodesForGoogle() {
 
 export function injectWebViewJsForGoogleResult() {
   let jsCode = `
-    ${ jsAddYamuGoogleResult()}
-    ${ jsInjectCodesForGoogleResult()}
+    ${ jsAddYamuGoogleResult() }
+    ${ jsInjectCodesForGoogleResult() }
   `;
 
   return jsCode;
