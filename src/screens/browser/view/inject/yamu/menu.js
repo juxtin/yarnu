@@ -1,3 +1,7 @@
+import * as React from 'react';
+import { View, Image, Text, Dimensions } from 'react-native';
+import { connect } from 'react-redux';
+
 export function jsOnYamuGotItClicked() {
     let jsCode = `
         function onYamuGotItClicked() {
@@ -39,7 +43,7 @@ export function jsAddYamuMainMenu() {
                     companyName = 'H&M';
                 if (window.location.host.includes(".mango.com"))
                     companyName = 'Mango';
-    
+
                 var cssAnimation = document.createElement('style');
                 cssAnimation.type = 'text/css';
                 var rules = document.createTextNode('@keyframes slider {'+
@@ -49,7 +53,7 @@ export function jsAddYamuMainMenu() {
                                                     '}');
                 cssAnimation.appendChild(rules);
                 document.getElementsByTagName("head")[0].appendChild(cssAnimation);
-    
+
                 var bodyTag = document.body;
                 var w = window.innerWidth/4;
                 var h = window.innerHeight/12;
@@ -75,11 +79,11 @@ export function jsAddYamuMainMenu() {
                     "   </div>" +
                     " </div>" +
                     "</div>";
-    
+
                 menuHtml +=
-                    "<div id='yamu-menu-base-container' style='width:"+w+"px;height:"+h+"px;position:fixed;left:0px;top:"+t+"px;z-index:9999;display:flex;flex-direction:row;z-index:20001'>" + 
-                    " <div id='y-container' style='width:"+w/2+"px; height:"+h+"px; background-color:black; display:flex; align-items:center; justify-content:center;' onclick='toggleYamuAssistantDiv()'>" +
-                    "   <span style='text-align:center;vertical-align:middle;color:white;width:25px;height:25px;line-height:25px;border:1px solid white;border-radius:50%;font-size:15px'>Y</span>" +
+                    "<div id='yamu-menu-base-container' style='width:26vw;height:16vw;position:fixed;left:0px;top:"+t+"px;z-index:9999;display:flex;flex-direction:row;z-index:20001'>" + 
+                    " <div id='y-container' style='width:13vw; height:15vw; background-color:black; display:flex; align-items:center; justify-content:center;' onclick='toggleYamuAssistantDiv()'>" +
+                    "   <span style='text-align:center;vertical-align:middle;color:white;width:7vw;height:7vw;line-height:8vw;border:1px solid white;border-radius:50%;font-size:5vw;'>Y</span>" +
                     " </div>" +
                     "</div>";
 
@@ -96,7 +100,7 @@ export function jsAddYamuMainMenu() {
                 var divYamuMenuHeart = document.getElementById('yamu-menu-heart-container');
                 if(divYamuMenuHeart == null) {
                     baseContainer.innerHTML +=
-                        " <div id='yamu-menu-heart-container' onclick='onYamukHeartClicked()' style='width:"+w*2/5+"px; height:"+h+"px; background-color:green; display:flex; align-items:center; justify-content:center; border-radius:0px "+w/6+"px "+w/6+"px 0px;'>" +
+                        " <div id='yamu-menu-heart-container' onclick='onYamukHeartClicked()' style='width:13vw; height:15vw; background-color:green; display:flex; align-items:center; justify-content:center; border-radius:0px 2vw 2vw 0px;'>" +
                         "   <img id='heart-icon' width='"+w/4+"' height='"+w/4+"' style='filter: grayscale(0%);' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAqCAYAAADxughHAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMqADAAQAAAABAAAAKgAAAAAlW3PoAAAECklEQVRoBdVZTUhUURT+7qSNhAupoCRIbBPUIqwUCmpRqRUWSbXoxyAKF4JBUUm0rugHLdpEWEZYQT8YZpJaLYoIIZAWBW0MooggSigq03x95848efPmzvjmzbPmXXjec88595zvm3Pv+7kqpGlWNYpproRCFcawjHIBZcX+DywMsH/CUZ/qwUvKvhvzLGK8SgZYyXhl7KdwbLH/hQieU+qlLHk+sjc2AZXUGHg6lcd41TNIJMkhWfGYAE4w0cNkU2oN86xh/CP0WJXaK25R/CmBi7yOMs8Xt38SEWsttnHKeTrOcDt7GHcginp1D5/T+VobMBPDGlRtOj+jTTG2wj71ADec9gQiJLGTJK7SIUHvnOBB/sTZW/mrPTX5sgorWIVbtM0y2T3qZJ3sIpl2238cMElsJIk7NOTZxix6WdvbmajDGYM5apnjOnUFTr1PeZQ5NjNHp8zXRKxNKMIPvOW4yGdQ07RRKmtVL7rEaFWhhp0QC+KHkpDShjANpeouhmIb+ScOUhkkCUkigG9yKS2WS+S4jl1grQgx7FDxjSfVKAwsfGKgQQ6l8qWJ6sBG33mDKc3Db6xjyMkiIWjnBQbZHKhQOMjSqjDbQ6RVKI/wVlgeIshmqGOoiHD1LjBbQ6QlB1la0RBBTgU1KkSGU1lDpB+WPfI+RIDNUMlB9sgbszVEWnKQijwLEWQzVHKQivSZrSHSysedwOW70CtWJpy3YYXX/GRYKHctaZdjXSj/auwxIlF+rSl8DR0NwSzY2TQR1YlvlFtCSKQ5jj1GRBMoxmn28sodljaI2Thjg7X3CNQVffTSaBtyvo+gUWOOAx0nImN+/3Zzr5zLeRIKZzVWB9AEIlpfgkPs+x0+uSb2owSH3aD0c8St5OfvXH51DfDZIgd1udMUD+amooznZu/coJIrQg/tqFBHUY4tc6VZXPZ1JhIC0EhEDPH90iByTjSFBve+cOJKSUSc+Oi/wF+hyTnhv8jEoLGkSZ6WiMxjgFMkczxNjMk1MbfGMEEW42Y3zeFJYTP1+022SdS18KTygJf4E1bEDqIDxpbZv7gByMZu8kpCMHquiE2IldlBuY1Xvq0LuB9hvN0kcS2TuBkTkeA8VV/NU/XbFIM+Lx7ifXQL706PMiEhvp6XljOwTpSPJazngFOflSyxGNMPCcnri4hMVPf5plyM5STTKuOsmsRgLB3TZyBfS8udK/6fLvl3XaZLTZZSI6vQ7o6Z6TgQIpLUqsEcjOASX2qqPYFQ6OFS2qO68MGT/wROgRGx8/AgYy/lkylfOOXFD/pJnf2StJOy971HHDESRD6FW/mGOp97Rw4FnM8ceTa0iU37JMzKfhB4RZyQrPVYilFWR1oeq9CNF057kPJfqz3fOAp6CJ0AAAAASUVORK5CYII='/>" +
                         " </div>";
                 }

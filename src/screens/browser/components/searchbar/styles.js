@@ -24,6 +24,7 @@ export default StyleSheet.create({
   listContainerStyle: {
   },
   listStyle: {
+    // width: '100%',
     marginLeft: -13,
     marginRight: -43,
     marginTop: 5,
@@ -36,9 +37,10 @@ export default StyleSheet.create({
   searchItemViewWrapper: {
     flexDirection: 'row',
     height: 40,
+    // marginRight: -23,
     alignItems: 'center',
     borderBottomColor: '#F1F1F1',
-    borderBottomWidth: 1,
+    borderBottomWidth: 1
   },
   signalItemViewWrapper: {
     flexDirection: 'row',
@@ -65,7 +67,7 @@ export default StyleSheet.create({
   itemSearchText: {
     flex: 1,
     fontSize: 15,
-    color: 'black'
+    color: 'black',
   },
   itemSignalText: {
     flex: 1,
@@ -109,7 +111,8 @@ export default StyleSheet.create({
   },
   btnSearch: {
     alignSelf: 'center',
-    marginRight: 10,
+    marginRight: 20,
+    // paddingRight: 50,
   },
   btnSignal: {
     width: 42,
@@ -139,6 +142,6 @@ export default StyleSheet.create({
     flex: 1,
     color: 'black',
     height: 32,
-    marginRight: 5,
+    marginRight: 5
   },
 });

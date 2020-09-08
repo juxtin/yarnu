@@ -11,3 +11,22 @@ export function jsIsPartnerDomain() {
 
     return jsCode;
 }
+
+export function jsApplyPortrait() {
+    let jsCode = `
+        function applyPortrait() {
+            var btnYamu = document.getElementbyId('');
+            btnYamu.class = "portait";
+        };
+    `;
+
+    return jsCode;
+}
+
+export function jsOnPortrait() {
+    let jsCode = `
+        applyPortrait();
+    `;
+
+    return jsCode;
+}

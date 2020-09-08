@@ -40,47 +40,94 @@ const BrowserStack = createStackNavigator();
 const MainBottomTab = createBottomTabNavigator();
 
 function MainBottomTabNavigator() {
-  return (
-    <MainBottomTab.Navigator
-      initialRouteName="BrowserHome"
-      headerMode="none"
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName, titleName;
-          if (route.name === 'BrowserHome') {
-            iconName = focused ? R.images.icon_tab_browser_active : R.images.icon_tab_browser_inactive;
-            titleName = 'Browser'
-          } else if (route.name === 'Projects') {
-            iconName = focused ? R.images.icon_tab_projects_active : R.images.icon_tab_projects_inactive;
-            titleName = 'Projects'
-          } else if (route.name === 'Offers') {
-            iconName = focused ? R.images.icon_tab_offers_active : R.images.icon_tab_offers_inactive;
-            titleName = 'Offers'
-          } else if (route.name === 'Profile') {
-            iconName = focused ? R.images.icon_tab_profile_active : R.images.icon_tab_profile_inactive;
-            titleName = 'Profile'
-          }
+  var ScreenWidth = Dimensions.get('window').width;
+  var ScreenHeight = Dimensions.get('window').height;
+  if (ScreenWidth < ScreenHeight) {
+    return (
+      <MainBottomTab.Navigator
+        initialRouteName="BrowserHome"
+        headerMode="none"
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName, titleName;
+            if (route.name === 'BrowserHome') {
+              iconName = focused ? R.images.icon_tab_browser_active : R.images.icon_tab_browser_inactive;
+              titleName = 'Browser'
+            } else if (route.name === 'Projects') {
+              iconName = focused ? R.images.icon_tab_projects_active : R.images.icon_tab_projects_inactive;
+              titleName = 'Projects'
+            } else if (route.name === 'Offers') {
+              iconName = focused ? R.images.icon_tab_offers_active : R.images.icon_tab_offers_inactive;
+              titleName = 'Offers'
+            } else if (route.name === 'Profile') {
+              iconName = focused ? R.images.icon_tab_profile_active : R.images.icon_tab_profile_inactive;
+              titleName = 'Profile'
+            }
 
-          return  <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                    <Image
-                      style={{ width: 30, height: 30, marginTop: 20, resizeMode: 'contain', }}
-                      source={iconName}/>
-                    <Text style={{ fontSize: 10, marginTop: 2, marginBottom: 10, textAlign: 'center', }}>{titleName}</Text>
-                  </View>;
-        },
-      })}
+            return <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <Image
+                style={{ width: 30, height: 30, marginTop: 20, resizeMode: 'contain', }}
+                source={iconName} />
+              <Text style={{ fontSize: 10, marginTop: 2, marginBottom: 10, textAlign: 'center', width: 50 }}>{titleName}</Text>
+            </View>;
+          },
+        })}
 
-      tabBarOptions={{
-        showLabel: false,
-        style: {height: 64 * Dimensions.get('window').height / 667}
-      }}
-    >
-      <MainBottomTab.Screen name="BrowserHome" component={BrowserHome} />
-      <MainBottomTab.Screen name="Projects" component={Projects} />
-      <MainBottomTab.Screen name="Offers" component={Offers} />
-      <MainBottomTab.Screen name="Profile" component={Profile} />
-    </MainBottomTab.Navigator>
-  );
+        tabBarOptions={{
+          showLabel: false,
+          style: { height: 64 * Dimensions.get('window').height / 667 }
+        }}
+      >
+        <MainBottomTab.Screen name="BrowserHome" component={BrowserHome} />
+        <MainBottomTab.Screen name="Projects" component={Projects} />
+        <MainBottomTab.Screen name="Offers" component={Offers} />
+        <MainBottomTab.Screen name="Profile" component={Profile} />
+      </MainBottomTab.Navigator>
+    );
+  } else {
+    return (
+      <MainBottomTab.Navigator
+        initialRouteName="BrowserHome"
+        headerMode="none"
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName, titleName;
+            if (route.name === 'BrowserHome') {
+              iconName = focused ? R.images.icon_tab_browser_active : R.images.icon_tab_browser_inactive;
+              titleName = 'Browser'
+            } else if (route.name === 'Projects') {
+              iconName = focused ? R.images.icon_tab_projects_active : R.images.icon_tab_projects_inactive;
+              titleName = 'Projects'
+            } else if (route.name === 'Offers') {
+              iconName = focused ? R.images.icon_tab_offers_active : R.images.icon_tab_offers_inactive;
+              titleName = 'Offers'
+            } else if (route.name === 'Profile') {
+              iconName = focused ? R.images.icon_tab_profile_active : R.images.icon_tab_profile_inactive;
+              titleName = 'Profile'
+            }
+
+            return <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <Image
+                style={{ width: 30, height: 30, marginTop: 20, resizeMode: 'contain', }}
+                source={iconName} />
+              <Text style={{ fontSize: 10, marginTop: 2, marginBottom: 10, textAlign: 'center', width: 50 }}>{titleName}</Text>
+            </View>;
+          },
+        })}
+
+        tabBarOptions={{
+          showLabel: false,
+          style: { height: 64 * Dimensions.get('window').width / 667 }
+        }}
+      >
+        <MainBottomTab.Screen name="BrowserHome" component={BrowserHome} />
+        <MainBottomTab.Screen name="Projects" component={Projects} />
+        <MainBottomTab.Screen name="Offers" component={Offers} />
+        <MainBottomTab.Screen name="Profile" component={Profile} />
+      </MainBottomTab.Navigator>
+    );
+  }
+
 }
 
 function BrowserStackNavigator() {
@@ -125,7 +172,7 @@ class Screens extends React.Component {
 
   componentDidUpdate(prevProps) {
     //console.log("[Screens] componentDidUpdate -> hideMainBottomTabNavigator: " + this.props.hideMainBottomTabNavigator);
-    if(this.props.hideMainBottomTabNavigator !== prevProps.hideMainBottomTabNavigator) {
+    if (this.props.hideMainBottomTabNavigator !== prevProps.hideMainBottomTabNavigator) {
       this.setState({
         hideMainBottomTabNavigator: this.props.hideMainBottomTabNavigator
       });

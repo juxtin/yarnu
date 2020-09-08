@@ -418,6 +418,7 @@ class SearchBar extends Component {
                     onSubmitEditing={this._onSearchSubmit}
                     onChangeText={this._onTextInputTextChanged}
                     onFocus={this._onTextInputFocused}
+                    selectTextOnFocus={true}
                     onEndEditing={this._onTextInputEditEnded}
                     value={this.state.isSearchUrl ? this.state.searchUrl : this.state.searchText}
                   />
@@ -433,9 +434,10 @@ class SearchBar extends Component {
                   }>
                     <Image style={styles.itemSearchImage} source={item.type == SEACH_SUGGESTION_FAVORITE ? R.images.icon_favorites_inactive : (item.isUrl ? R.images.icon_globe_black : R.images.icon_search_black)} />
                     <Text style={styles.itemSearchText}>{item.searchKey}</Text>
-                    {item.isSearched ? (
+                    <Image style={styles.itemUpArrowImage} source={R.images.icon_uparrow_black} />
+                    {/* {item.isSearched ? (
                       <Image style={styles.itemUpArrowImage} source={R.images.icon_uparrow_black} />
-                    ) : null}
+                    ) : null} */}
                   </TouchableOpacity>
 
                 ) : (
@@ -472,7 +474,10 @@ class SearchBar extends Component {
           </View>
           {(this.state.isEditing && searchTextInputValue != '') ? (
             <TouchableOpacity style={styles.btnSearch} onPress={this._onDeleteTextInput}>
-              <Image style={{ width: 22, height: 22, resizeMode: 'contain', }} source={R.images.icon_input_delete} />
+              {this.props.isIncognito ?
+                <Image style={{ width: 22, height: 22, resizeMode: 'contain', }} source={R.images.icon_input_delete_white} />
+                :
+                <Image style={{ width: 22, height: 22, resizeMode: 'contain', }} source={R.images.icon_input_delete} />}
             </TouchableOpacity>
           ) : null}
           <TouchableOpacity style={styles.btnSignal} onPress={this._onPressSignal} >
@@ -483,6 +488,7 @@ class SearchBar extends Component {
               <ProgressView progress={this.props.progressStep} progressTintColor="#648FEB" />
             </View>
           ) : null}
+
         </View>
         {this.state.showSignalDeleteModal ? (
           <SignalDeleteModal

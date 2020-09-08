@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { SafeAreaView, TouchableWithoutFeedback, TouchableOpacity, View, Image, Text, Keyboard } from 'react-native';
+import { SafeAreaView, TouchableWithoutFeedback, TouchableOpacity, View, Image, Text, Keyboard, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
+
 
 import GlobalStyles from 'constants/globalstyles';
 
@@ -8,11 +9,15 @@ import HowWorksModal from './howworksmodal';
 import R from 'res/R';
 import styles from './styles';
 
+
 // action
 import { navigateToScreen } from 'myredux/actions';
 
 // searchbar
 import SearchBar from '../components/searchbar';
+
+// Landscape orientation
+import Orientation from 'react-native-orientation';
 
 class BrowserHome extends Component {
 
@@ -22,12 +27,33 @@ class BrowserHome extends Component {
     this.state = {
       showHowWorksModal: false,
       screenPressed: false,
+      orientation: ''
     };
+
+
+  }
+
+  getOrientation = () => {
+    // if (this.refs.rootView) {
+    if (Dimensions.get('window').width < Dimensions.get('window').height) {
+      this.setState({ orientation: 'portrait' });
+    }
+    else {
+      this.setState({ orientation: 'landscape' });
+    }
+    // }
   }
 
   componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
       this.props.navigateToScreen('BrowserHome');
+    });
+    Orientation.unlockAllOrientations();
+
+    this.getOrientation();
+
+    Dimensions.addEventListener('change', () => {
+      this.getOrientation();
     });
   }
 
@@ -66,6 +92,8 @@ class BrowserHome extends Component {
   }
 
   render() {
+    // (this.state.screenOrientation === 'PORTRAIT' ? alert('This is PORTRAIT') : alert('This is Landscape'))
+    // (this.state.orientation == 'portrait') ? alert('This is PORTRAIT') : alert('This is Landscape')
     return (
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <TouchableWithoutFeedback onPress={this._onPressScreen}>
@@ -80,11 +108,17 @@ class BrowserHome extends Component {
               </Text>
             </TouchableOpacity>
             <View style={{ flex: 74 }}></View>
-            <Image style={styles.imageInfo} source={R.images.img_results} />
+
+            {(this.state.orientation == 'portrait') ? (
+              <Image style={styles.imageInfo} source={R.images.img_results} />
+            ) : <Image style={styles.imageInfo} />}
+
             <View style={{ flex: 26 }}></View>
-            <View style={styles.illustrationViewWrapper}>
-              <Text>Illustration</Text>
-            </View>
+
+            {(this.state.orientation == 'portrait') ? (
+              <View style={styles.illustrationViewWrapper}><Text>Illustration</Text></View>
+            ) : <View style={{ ...styles.illustrationViewWrapper, display: 'none' }}><Text>Illustration</Text></View>}
+
           </View>
         </TouchableWithoutFeedback>
         {this.state.showHowWorksModal ? (
