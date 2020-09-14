@@ -28,11 +28,11 @@ export default class AdManagerSurveyFinal extends Component {
           <View style={styles.adContent}>
             <View style={styles.adEarn}>
               <Text style={{color: 'white', marginLeft: 3,}}>Earn</Text>
-              <Image style={{width: 25, height: 21, marginLeft: 5, marginRight: 5,}} source={R.images.icon_heart_empty} />
+              <Image style={{width: 14, height: 12, marginLeft: 5, marginRight: 5,}} source={R.images.icon_heart_white} />
               <Text style={{color: 'white', marginRight: 3,}}>25</Text>
             </View>
-            <View style={styles.adImage}></View>
-            <Text style={{color: 'red', marginTop: 20,}}>Here will be adidas image</Text>
+            <Image style={styles.adImage} source={R.images.img_product} />
+            <Image style={{marginTop: 20, width: 54, height: 36,}} source={R.images.img_adidas} />
             <Text style={styles.txtHot}>{isHot ? 'Hot or not:\nRate our newest sneaker model!' : 'Questionaire:\nLet us quiz you about our sneakers!'}</Text>
           </View>
         </View>

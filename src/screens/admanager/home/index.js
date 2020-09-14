@@ -9,24 +9,24 @@ export default class AdManangerHome extends Component {
   constructor(props) {
     super(props);
     this.menuArray = [
-      { menuText: 'Shopping Assistant', isSeperator: false, },
-      { menuText: 'Eco Cashback', isSeperator: false, },
-      { menuText: 'Yamu Widget', isSeperator: false, },
-      { menuText: '', isSeperator: true, },
-      { menuText: 'Advertising options', isSeperator: true, },
-      { menuText: 'Wink back', isSeperator: false, },
-      { menuText: 'Reach back', isSeperator: false, },
-      { menuText: 'Survey', isSeperator: false, },
-      { menuText: '', isSeperator: true, },
-      { menuText: 'Billing', isSeperator: false, },
-      { menuText: '', isSeperator: true, },
-      { menuText: 'My campaigns', isSeperator: true, },
+      {menuText: 'Shopping Assistant', isSeperator: false, },
+      {menuText: 'Eco Cashback', isSeperator: false, },
+      {menuText: 'Yamu Widget', isSeperator: false, },
+      {menuText: '', isSeperator: true, },
+      {menuText: 'Advertising options', isSeperator: true, },
+      {menuText: 'Wink back', isSeperator: false, },
+      {menuText: 'Reach back', isSeperator: false, },
+      {menuText: 'Survey', isSeperator: false, },
+      {menuText: '', isSeperator: true, },
+      {menuText: 'Billing', isSeperator: false, },
+      {menuText: '', isSeperator: true, },
+      {menuText: 'My campaigns', isSeperator: true, },
     ]
     this.campaignArray = [
-      { title: 'Shopping Assistant', cashback: '5% Cashback', info: '567 Reach | 6% Conversions', },
-      { title: 'Eco cashback - Sneakers', cashback: '5% Cashback', info: '567 Reach | 6% Conversions', },
-      { title: 'Wink Back - Jeans', cashback: '5% Cashback', info: '567 Reach | 6% Conversions', },
-      { title: 'Wink Back - Jeans', cashback: '5% Cashback', info: '567 Reach | 6% Conversions', },
+      {title: 'Shopping Assistant', cashback: '5% Cashback', info: '567 Reach | 6% Conversions', },
+      {title: 'Eco cashback - Sneakers', cashback: '5% Cashback', info: '567 Reach | 6% Conversions', },
+      {title: 'Wink Back - Jeans', cashback: '5% Cashback', info: '567 Reach | 6% Conversions', },
+      {title: 'Wink Back - Jeans', cashback: '5% Cashback', info: '567 Reach | 6% Conversions', },
     ]
   }
 
@@ -73,20 +73,20 @@ export default class AdManangerHome extends Component {
   renderMenuItem = (item, index) => {
     if (item.menuText === '' && item.isSeperator) {
       return (
-        <View style={{ height: 10, backgroundColor: '#F1F1F1' }}>
+        <View style={{height: 10, backgroundColor: '#F1F1F1'}}>
         </View>
       )
     } else if (item.menuText !== '' && item.isSeperator) {
       return (
-        <View style={{ ...styles.menuItem, borderBottomWidth: 0, }}>
-          <Text style={{ ...styles.menuItemText, fontWeight: 'bold', }}>{item.menuText}</Text>
+        <View style={{...styles.menuItem, borderBottomWidth: 0,}}>
+          <Text style={{...styles.menuItemText, fontWeight: 'bold',}}>{item.menuText}</Text>
         </View>
       )
     } else {
       return (
         <TouchableOpacity style={styles.menuItem} onPress={this._onPressMenuItem.bind(this, index)}>
           <Text style={styles.menuItemText}>{item.menuText}</Text>
-          <Image style={styles.menuItemArrow} width={13} height={24} source={R.images.icon_rightarrow_black} />
+          <Image style={styles.menuItemArrow} width={13} height= {24} source={R.images.icon_rightarrow_black} />
         </TouchableOpacity>
       )
     }
@@ -96,7 +96,7 @@ export default class AdManangerHome extends Component {
     return (
       <View style={styles.campaignItem}>
         <View style={styles.campaignHeader}>
-          <View style={{ width: 16, height: 16, backgroundColor: '#72C500' }}></View>
+          <View style={{width: 16, height: 16, backgroundColor: '#72C500'}}></View>
         </View>
         <View style={styles.campaignContent}>
           <Text style={styles.campaignText}>{item.title}</Text>
@@ -115,7 +115,7 @@ export default class AdManangerHome extends Component {
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <View style={styles.homeHeader}>
           <TouchableOpacity onPress={this._onPressBack}>
-            <Image style={styles.imgBack} width={13} height={24} source={R.images.icon_leftarrow_black} />
+            <Image style={styles.imgBack} width={13} height= {24} source={R.images.icon_leftarrow_black} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Ads Manager</Text>
         </View>

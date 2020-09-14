@@ -100,7 +100,7 @@ export default class HowWorksModal extends Component {
           <View style={styles.modalWrapper}>
             <View style={styles.modalContainer}>
               <View style={styles.modalHeader}>
-                <Text style={styles.textTitle}>ssThis is how it works</Text>
+                <Text style={styles.textTitle}>This is how it works</Text>
                 <TouchableOpacity style={styles.btnClose} onPress={this.props.pressHide}>
                   <Image style={{ width: 20, height: 20, alignSelf: 'flex-end', right: 10, top: 10, }} source={R.images.icon_close_white} />
                 </TouchableOpacity>

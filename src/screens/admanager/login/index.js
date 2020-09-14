@@ -24,10 +24,10 @@ export default class AdManangerLogin extends Component {
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <View style={styles.wrapper}>
           <TouchableOpacity onPress={this._onPressBack}>
-            <Image style={styles.imgBack} width={13} height={24} source={R.images.icon_leftarrow_black} />
+            <Image style={styles.imgBack} width={13} height= {24} source={R.images.icon_leftarrow_black} />
           </TouchableOpacity>
           <View>
-            <Image style={styles.imgYamuLogo} width={144} height={144} source={R.images.img_yamu_logo} />
+            <Image style={styles.imgYamuLogo} width={144} height= {144} source={R.images.img_yamu_logo} />
             <Text style={styles.txtTitle}>YAMU FOR{'\n'}BUSINESS</Text>
             <TouchableOpacity style={styles.btnLogin} onPress={this._onPressLogin}>
               <Text style={styles.btnTitle}>Login</Text>

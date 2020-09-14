@@ -83,7 +83,7 @@ export default class AdManangerSurveyHome extends Component {
             <View style={styles.viewUpload}>
               <View style={{alignItems: 'center',}}>
                 <Text>Upload picture here</Text>
-                <Image style={styles.imgUpload} width={24} height= {33} source={R.images.icon_share} />
+                <Image style={styles.imgUpload} source={R.images.icon_upload_black} />
               </View>
             </View>
             <View style={styles.viewMenu}>

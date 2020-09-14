@@ -83,6 +83,8 @@ export default StyleSheet.create({
   },
   imgUpload: {
     marginTop: 24,
+    width: 30,
+    height: 30,
   },
   failedText: {
     color: '#FF4600',

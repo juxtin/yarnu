@@ -37,5 +37,37 @@ export default StyleSheet.create({
   },
   textCode: {
     height: '100%',
+    color: '#979797',
+  },
+  chartContainer: {
+    width: 200,
+    height: 210,
+    borderColor: 'lightgray',
+    borderWidth: 1,
+    borderRadius: 20,
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
+  chartWrapper: {
+    width: 144,
+    height: 144,
+    borderColor: 'lightgray',
+    borderWidth: 1,
+    borderRadius: 72,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pieChart: {
+    width: 132,
+    height: 132,
+  },
+  yamuWrapper: {
+    width: 200,
+    height: 44,
+    backgroundColor: '#72C500',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
 });

@@ -36,7 +36,7 @@ export default class ApiModal extends Component {
             </View>
             <View style={styles.contentWrapper}>
               <TouchableOpacity style={styles.btnGoogle} onPress={this.props.pressGoogle}>
-                <Image style={styles.imgGoogle} source={R.images.img_yamu_logo} />
+                <Image style={styles.imgGoogle} source={R.images.icon_google} />
                 <Text style={styles.txtGoogle}>Sign in with Google</Text>
               </TouchableOpacity>
             </View>

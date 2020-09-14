@@ -51,6 +51,8 @@ export default StyleSheet.create({
   },
   imgUpload: {
     marginTop: 24,
+    width: 30,
+    height: 30,
   },
   viewMenu: {
     height: 40,

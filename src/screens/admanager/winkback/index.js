@@ -83,7 +83,7 @@ export default class AdManangerWinkback extends Component {
         <View style={styles.listItem}>
           <Text style={styles.listText}>{item.title}</Text>
           <TouchableOpacity style={styles.listFooterButton}>
-            <Image style={{width: 20, height: 20, }} source={R.images.icon_favorites_inactive} />
+            <Image style={{width: 14, height: 14, }} source={R.images.icon_close_black} />
           </TouchableOpacity>
         </View>
       )
@@ -112,12 +112,12 @@ export default class AdManangerWinkback extends Component {
               renderTextInput={() => (
                 <View style={{flexDirection: 'row',}}>
                   <View style={styles.viewHeart}>
-                    <Image style={styles.imgHeart} source={R.images.icon_heart_empty} />
+                    <Image style={styles.imgHeart} source={R.images.icon_heart_white} />
                   </View>
                   <TextInput editable={false} style={styles.textInput} value={this.state.textValue}>
                   </TextInput>
                   <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_black} />
+                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
                   </TouchableOpacity>
                 </View>
               )}
@@ -149,12 +149,12 @@ export default class AdManangerWinkback extends Component {
               renderTextInput={() => (
                 <View style={{flexDirection: 'row',}}>
                   <View style={styles.viewHeart}>
-                    <Image style={styles.imgHeart} source={R.images.icon_heart_empty} />
+                    <Image style={styles.imgHeart} source={R.images.icon_heart_white} />
                   </View>
                   <TextInput editable={false} style={styles.textInput} value={this.state.otherTextValue}>
                   </TextInput>
                   <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressOtherDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_black} />
+                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
                   </TouchableOpacity>
                 </View>
               )}

@@ -26,9 +26,13 @@ export default StyleSheet.create({
   },
   imgBack: {
     marginLeft: 20,
+    width: 20,
+    height: 16,
   },
   imgClose: {
     marginRight: 20,
+    width: 14,
+    height: 14,
   },
   surveyImage: {
     width: 333 * ratio,
@@ -36,6 +40,8 @@ export default StyleSheet.create({
     backgroundColor: 'lightgray',
     marginTop: 10,
     marginBottom: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   txtQuestionaire: {
     fontWeight: 'bold',

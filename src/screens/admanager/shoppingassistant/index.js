@@ -126,20 +126,20 @@ export default class AdManangerShoppingAssistant extends Component {
               {this.state.uploadStatus == 0 ? (
                 <View style={{alignItems: 'center',}}>
                   <Text>Upload spreadsheet here</Text>
-                  <Image style={styles.imgUpload} width={24} height= {33} source={R.images.icon_share} />
+                  <Image style={styles.imgUpload} source={R.images.icon_upload_black} />
                 </View>
               ) : this.state.uploadStatus == 1 ? (
                 <View style={{alignItems: 'center',}}>
                   <Text style={styles.failedText}>Oops, something went wrong!{'\n'}Please check your document and try again.</Text>
                   <View style={styles.failedImage}>
-                    <Image width={24} height= {24} source={R.images.icon_close_white} />
+                    <Image style={{width: 60, height: 60,}} source={R.images.icon_close_red} />
                   </View>
                 </View>
               ) : this.state.uploadStatus == 2 ? (
                 <View style={{alignItems: 'center',}}>
                   <Text style={styles.successText}>Well done!{'\n'}Spread sheet successfully uploaded.</Text>
                   <View style={styles.successImage}>
-                    <Image width={24} height= {24} source={R.images.icon_close_white} />
+                    <Image style={{width: 60, height: 60,}} source={R.images.icon_success_green} />
                   </View>
                 </View>
               ): null}

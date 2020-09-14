@@ -65,7 +65,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   campaignFooterButton: {
-    height: 64,
+    height:64,
     marginRight: 15,
   },
 });

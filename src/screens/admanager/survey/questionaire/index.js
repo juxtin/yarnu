@@ -33,14 +33,16 @@ export default class AdManangerSurveyQuestionaire extends Component {
         <View style={styles.rootWrapper}>
           <View style={{flexDirection: 'row', marginTop: 15,}}>
             <TouchableOpacity onPress={this._onPressBack}>
-              <Image style={styles.imgBack} width={13} height= {24} source={R.images.icon_leftarrow_black} />
+              <Image style={styles.imgBack} source={R.images.icon_leftarrow_back} />
             </TouchableOpacity>
             <View style={{flex: 1,}}></View>
             <TouchableOpacity onPress={this._onPressBack}>
-              <Image style={styles.imgClose} width={13} height= {24} source={R.images.icon_rightarrow_black} />
+              <Image style={styles.imgClose} source={R.images.icon_close_black} />
             </TouchableOpacity>
           </View>
-          <View style={styles.surveyImage}></View>
+          <View style={styles.surveyImage}>
+            <Image source={R.images.img_product} />
+          </View>
           <Text style={styles.txtQuestionaire}>What do you think about{'\n'}Adidas Superstars?</Text>
           <View style={styles.viewQuestionaire}>
             <TouchableOpacity style={styles.viewCool} onPress={this._onPressCool}>

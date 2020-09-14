@@ -57,7 +57,7 @@ export default class UpdateModal extends Component {
                 </View>
               </View>
               <Text style={styles.paypalTitle}>Please set up your{'\n'}billig</Text>
-              <Text style={{color: 'red', marginTop: 20, }}>Here will be paypal image</Text>
+              <Image style={{width: 96, height: 26, marginTop: 10,}} source={R.images.img_paypal} />
               <TouchableOpacity style={styles.btnLogin} onPress={this.props.pressLogin}>
                 <Text style={{color: 'white'}}>Log in</Text>
               </TouchableOpacity>

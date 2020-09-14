@@ -29,17 +29,19 @@ export default class AdManangerSurveyHot extends Component {
         <View style={styles.rootWrapper}>
           <View style={{flexDirection: 'row', marginTop: 15,}}>
             <TouchableOpacity onPress={this._onPressBack}>
-              <Image style={styles.imgBack} width={13} height= {24} source={R.images.icon_leftarrow_black} />
+              <Image style={styles.imgBack} source={R.images.icon_leftarrow_back} />
             </TouchableOpacity>
             <View style={{flex: 1,}}></View>
             <TouchableOpacity onPress={this._onPressBack}>
-              <Image style={styles.imgClose} width={13} height= {24} source={R.images.icon_rightarrow_black} />
+              <Image style={styles.imgClose} source={R.images.icon_close_black} />
             </TouchableOpacity>
           </View>
-          <View style={styles.surveyImage}></View>
+          <View style={styles.surveyImage}>
+            <Image source={R.images.img_product} />
+          </View>
           <Text style={styles.txtHot}>Hot or not?</Text>
           <View style={styles.viewHot}>
-            <Image style={styles.imgNot} width={24} height= {24} source={R.images.img_yamu_logo} />
+            <Image style={styles.imgNot} source={R.images.img_nothot} />
             <Slider
               style={{flex: 1, height: 40, }}
               step={1}
@@ -49,7 +51,7 @@ export default class AdManangerSurveyHot extends Component {
               // onValueChange={val => this.setState({ age: val })}
               // onSlidingComplete={ val => this.getVal(val)}
             />
-            <Image style={styles.imgHot} width={24} height= {24} source={R.images.img_yamu_logo} />
+            <Image style={styles.imgHot} source={R.images.img_hot} />
           </View>
           <View style={{flex: 1,}}></View>
           <View style={styles.viewFooter}>

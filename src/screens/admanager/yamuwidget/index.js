@@ -47,8 +47,17 @@ export default class AdManangerYamuWidget extends Component {
         </View>
         <ScrollView style={styles.rootScrollView}>
           <View>
-            <Text style={{marginTop: 30, marginLeft: 22, marginBottom: 40, }}>Add this widget to your social icons on your{'\n'}website to show your support to your users!</Text>
-            <PieChart style={{ height: 200 }} data={pieData} />
+            <Text style={{marginTop: 30, marginLeft: 22, marginBottom: 35, }}>Add this widget to your social icons on your{'\n'}website to show your support to your users!</Text>
+            <View style={styles.chartContainer}>
+              <View style={{flex: 1,}}></View>
+              <View style={styles.chartWrapper}>
+                <PieChart style={styles.pieChart} data={pieData} />
+              </View>
+              <View style={{flex: 1,}}></View>
+              <View style={styles.yamuWrapper}>
+                <Text style={{color: 'white',}}>Yamu</Text>
+              </View>
+            </View>
             <Text style={{marginTop: 40, marginLeft: 22, marginBottom: 10, }}>Copy code</Text>
             <View style={styles.viewCode}>
               <Text style={styles.textCode}>{"<"}code{">"}{"\n"}Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.{"\n"}{"<"}/code{">"}</Text>

@@ -162,6 +162,8 @@ export default StyleSheet.create({
   },
   imgUpload: {
     marginTop: 24,
+    width: 30,
+    height: 30,
   },
   viewUrl: {
     height: 50,
@@ -173,5 +175,32 @@ export default StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  viewAdditional: {
+    flexDirection: 'row',
+    height: 40,
+    marginLeft: 12,
+    marginRight: 12,
+    alignItems: 'center',
+  },
+  textAdditional: {
+    width: 80,
+  },
+  addiContent: {
+    height: 30,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F1F1F1',
+    paddingLeft: 5,
+    paddingRight: 5,
+  },
+  addiClose: {
+    width: 20,
+    height: 20,
+    marginLeft: 5,
+  },
+  textAddmore: {
+    marginLeft: 15,
   },
 });

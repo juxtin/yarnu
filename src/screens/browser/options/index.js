@@ -16,7 +16,7 @@ import Settings from './settings';
 
 // action
 import { navigateToScreen, setBrowserFavorites, setBrowserHistorys, setBrowserTabs } from 'myredux/actions';
-import { setBrowserIncognitoTabs, setBrowserSettingsSearchRegion, setBrowserSettingsSafeSearch, setBrowserSettingsAutocomplete, } from 'myredux/actions';
+import { setBrowserIncognitoTabs, setBrowserSettingsSearchRegion, setBrowserSettingsSafeSearch, setBrowserSettingsAutocomplete,  } from 'myredux/actions';
 
 import FavoriteModel from 'models/favoritemodel';
 
@@ -194,7 +194,7 @@ class BrowserOptions extends Component {
       showSelectionModal: true,
     });
   }
-
+  
   _onPressAutocomplete = (bEnable) => {
     this.props.setBrowserSettingsAutocomplete(bEnable)
   }
@@ -250,11 +250,11 @@ class BrowserOptions extends Component {
   }
 
   _renderSwitch(index) {
-    switch (index) {
+    switch(index) {
       case 0:
         return (
           <Favorites
-            ref={r => { this.mFavoriteView = r }}
+            ref={r => {this.mFavoriteView = r}}
             arrayFavorite={this.props.arrayFavorite}
             style={styles.bodyWrapper}
             pressDone={() => this._onPressDone()}
@@ -267,7 +267,7 @@ class BrowserOptions extends Component {
       case 1:
         return (
           <History
-            ref={r => { this.mHistoryView = r }}
+            ref={r => {this.mHistoryView = r}}
             arrayHistory={this.props.arrayHistory}
             style={styles.bodyWrapper}
             pressDone={() => this._onPressDone()}
@@ -278,7 +278,7 @@ class BrowserOptions extends Component {
       case 2:
         return (
           <Incognito
-            ref={r => { this.mIncognitoView = r }}
+            ref={r => {this.mIncognitoView = r}}
             arrayIncognitoTab={this.props.arrayIncognitoTab}
             style={styles.bodyWrapper}
             pressDone={() => this._onPressDone()}
@@ -291,7 +291,7 @@ class BrowserOptions extends Component {
       case 3:
         return (
           <Tabs
-            ref={r => { this.mTabView = r }}
+            ref={r => {this.mTabView = r}}
             arrayTab={this.props.arrayTab}
             style={styles.bodyWrapper}
             pressDone={() => this._onPressDone()}
@@ -322,29 +322,29 @@ class BrowserOptions extends Component {
     return (
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <View style={styles.rootWrapper}>
-          <View style={this.state.selectedIndex == 2 ? { ...styles.titleBar, backgroundColor: 'rgba(0,0,0,0.5)', } : styles.titleBar}>
+          <View style={this.state.selectedIndex == 2 ? {...styles.titleBar, backgroundColor: 'rgba(0,0,0,0.5)',} : styles.titleBar}>
             <Text style={styles.titleText}>{arrayBrowserOptionsTitle[this.state.selectedIndex]}</Text>
             <View style={styles.tabBarWrapper}>
               <TouchableOpacity style={styles.headerItem} onPress={this._onPressHeaderItem.bind(this, 0)}>
-                <Image style={styles.tabItem} source={this.state.selectedIndex == 0 ? R.images.icon_favorites_active : R.images.icon_favorites_inactive} />
+                <Image style={styles.tabItem} source={this.state.selectedIndex==0 ? R.images.icon_favorites_active : R.images.icon_favorites_inactive} />
               </TouchableOpacity>
               <View style={styles.seperator}></View>
               <TouchableOpacity style={styles.headerItem} onPress={this._onPressHeaderItem.bind(this, 1)}>
-                <Image style={styles.tabItem} source={this.state.selectedIndex == 1 ? R.images.icon_history_active : R.images.icon_history_inactive} />
+                <Image style={styles.tabItem} source={this.state.selectedIndex==1 ? R.images.icon_history_active : R.images.icon_history_inactive} />
               </TouchableOpacity>
               <View style={styles.seperator}></View>
               <TouchableOpacity style={styles.headerItem} onPress={this._onPressHeaderItem.bind(this, 2)}>
-                <Image style={styles.tabItem} source={this.state.selectedIndex == 2 ? R.images.icon_incognito_active : R.images.icon_incognito_inactive} />
+                <Image style={styles.tabItem} source={this.state.selectedIndex==2 ? R.images.icon_incognito_active : R.images.icon_incognito_inactive} />
               </TouchableOpacity>
               <View style={styles.seperator}></View>
               <TouchableOpacity style={styles.headerItem} onPress={this._onPressHeaderItem.bind(this, 3)}>
-                <View style={this.state.selectedIndex == 3 ? { ...styles.tabsView, borderColor: '#72C500' } : { ...styles.tabsView, borderColor: 'black' }}>
-                  <Text style={this.state.selectedIndex == 3 ? { color: '#72C500' } : { color: 'black' }}>{this.props.arrayTab.length > 0 ? this.props.arrayTab.length : ''}</Text>
+                <View style={this.state.selectedIndex==3 ? {...styles.tabsView, borderColor: '#72C500'} : {...styles.tabsView, borderColor: 'black'}}>
+                  <Text style={this.state.selectedIndex==3 ? {color: '#72C500'} : {color: 'black'}}>{this.props.arrayTab.length > 0 ? this.props.arrayTab.length: ''}</Text>
                 </View>
               </TouchableOpacity>
               <View style={styles.seperator}></View>
               <TouchableOpacity style={styles.headerItem} onPress={this._onPressHeaderItem.bind(this, 4)}>
-                <Text style={this.state.selectedIndex == 4 ? { ...styles.moreText, color: '#72C500' } : { ...styles.moreText, color: 'black' }}>···</Text>
+                <Text style={this.state.selectedIndex==4 ? {...styles.moreText, color: '#72C500'} : {...styles.moreText, color: 'black'}}>···</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -352,8 +352,8 @@ class BrowserOptions extends Component {
           {this.state.showAddFavoriteModal ? (
             <AddFavoriteModal
               modalVisible={this.state.showAddFavoriteModal}
-              title={this.state.addOrEdit ? 'Title' : this.state.selectedFavoriteTitle}
-              url={this.state.addOrEdit ? 'https://google.com' : this.state.selectedFavoriteUrl}
+              title={this.state.addOrEdit ? 'Title': this.state.selectedFavoriteTitle }
+              url={this.state.addOrEdit ? 'https://google.com' : this.state.selectedFavoriteUrl }
               screenTitle={this.state.addOrEdit ? 'Add Favorite' : 'Edit Favorite'}
               pressAddFavoriteItem={(title, url) => this._onAddFavoriteItem(title, url)}
               pressHide={() => this.hideModal()}

@@ -38,7 +38,7 @@ export default class GiveHeartModal extends Component {
               <Text style={styles.contentTitle}>Upgrade to a full heart reward to{'\n'}help your customers with their{'\n'}eco projects!</Text>
               <View style={styles.viewHeart}>
                 <Image style={{width: 43, height: 36,}} source={R.images.icon_heart_half} />
-                <Image style={{width: 36, height: 6, marginLeft: 20, marginRight: 20,}} source={R.images.icon_more_inactive} />
+                <Image style={{width: 42, height: 16, marginLeft: 20, marginRight: 20,}} source={R.images.icon_rightarrow_gray} />
                 <Image style={{width: 43, height: 36,}} source={R.images.icon_heart_full} />
               </View>
               <TouchableOpacity style={styles.btnLaunch} onPress={this.props.pressGive}>

@@ -67,7 +67,7 @@ export default StyleSheet.create({
   },
   listFooterButton: {
     flexDirection: 'row',
-    height: 64,
+    height:64,
     marginRight: 15,
   },
   activeDot: {

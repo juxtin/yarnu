@@ -91,6 +91,10 @@ class BrowserHome extends Component {
     })
   }
 
+  _onPressIllustration = () => {
+    this.props.navigation.navigate('AdManagerLogin');
+  };
+
   render() {
     // (this.state.screenOrientation === 'PORTRAIT' ? alert('This is PORTRAIT') : alert('This is Landscape'))
     // (this.state.orientation == 'portrait') ? alert('This is PORTRAIT') : alert('This is Landscape')

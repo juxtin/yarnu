@@ -137,7 +137,7 @@ export default class AdManangerReachback extends Component {
         <View style={styles.listItem}>
           <Text style={styles.listText}>{item.title}</Text>
           <TouchableOpacity style={styles.listFooterButton}>
-            <Image style={{width: 20, height: 20, }} source={R.images.icon_favorites_inactive} />
+            <Image style={{width: 14, height: 14, }} source={R.images.icon_close_black} />
           </TouchableOpacity>
         </View>
       )
@@ -169,22 +169,22 @@ export default class AdManangerReachback extends Component {
               renderTextInput={() => (
                 <View style={{flexDirection: 'row',}}>
                   <View style={styles.viewHeart}>
-                    <Image style={styles.imgHeart} source={R.images.icon_heart_empty} />
+                    <Image style={styles.imgHeart} source={R.images.icon_heart_white} />
                   </View>
                   <TextInput editable={false} style={styles.textInput} value={this.state.textValue}>
                   </TextInput>
                   <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_black} />
+                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
                   </TouchableOpacity>
                 </View>
               )}
               renderItem={({ item, index }) => (
-                  <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
-                      this.setState({ textValue: item.title, cashbackArray: [] });
-                    }
-                  }>
-                    <Text style={{marginLeft: 10,}}>{item.title}</Text>
-                  </TouchableOpacity>
+                <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
+                    this.setState({ textValue: item.title, cashbackArray: [] });
+                  }
+                }>
+                  <Text style={{marginLeft: 10,}}>{item.title}</Text>
+                </TouchableOpacity>
                 )
               }
             />
@@ -206,7 +206,7 @@ export default class AdManangerReachback extends Component {
                   <TextInput editable={false} style={styles.textInput} value={this.state.trainerTextValue}>
                   </TextInput>
                   <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressTrainerDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_black} />
+                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
                   </TouchableOpacity>
                 </View>
               )}
@@ -230,22 +230,22 @@ export default class AdManangerReachback extends Component {
               renderTextInput={() => (
                 <View style={{flexDirection: 'row',}}>
                   <View style={styles.viewHeart}>
-                    <Image style={styles.imgHeart} source={R.images.icon_heart_empty} />
+                    <Image style={styles.imgHeart} source={R.images.icon_heart_white} />
                   </View>
                   <TextInput editable={false} style={styles.textInput} value={this.state.otherTextValue}>
                   </TextInput>
                   <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressOtherDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_black} />
+                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
                   </TouchableOpacity>
                 </View>
               )}
               renderItem={({ item, index }) => (
-                  <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
-                      this.setState({ otherTextValue: item.title, otherCashbackArray: [] });
-                    }
-                  }>
-                    <Text style={{marginLeft: 10,}}>{item.title}</Text>
-                  </TouchableOpacity>
+                <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
+                    this.setState({ otherTextValue: item.title, otherCashbackArray: [] });
+                  }
+                }>
+                  <Text style={{marginLeft: 10,}}>{item.title}</Text>
+                </TouchableOpacity>
                 )
               }
             />
@@ -258,7 +258,7 @@ export default class AdManangerReachback extends Component {
             <View style={styles.viewUpload}>
               <View style={{alignItems: 'center',}}>
                 <Text>Upload media here</Text>
-                <Image style={styles.imgUpload} width={24} height= {33} source={R.images.icon_share} />
+                <Image style={styles.imgUpload} source={R.images.icon_upload_black} />
               </View>
             </View>
             <Text style={{alignSelf: 'center', marginTop: 18,}}>Add your campaign url</Text>
@@ -281,22 +281,22 @@ export default class AdManangerReachback extends Component {
               renderTextInput={() => (
                 <View style={{flexDirection: 'row',}}>
                   <View style={styles.viewHeart}>
-                    <Image style={styles.imgHeart} source={R.images.icon_heart_empty} />
+                    <Image style={styles.imgHeart} source={R.images.icon_heart_white} />
                   </View>
                   <TextInput editable={false} style={styles.textInput} value={this.state.heartTextValue}>
                   </TextInput>
                   <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressHeartDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_black} />
+                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
                   </TouchableOpacity>
                 </View>
               )}
               renderItem={({ item, index }) => (
-                  <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
-                      this.setState({ heartTextValue: item.title, heartArray: [] });
-                    }
-                  }>
-                    <Text style={{marginLeft: 10,}}>{item.title}</Text>
-                  </TouchableOpacity>
+                <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
+                    this.setState({ heartTextValue: item.title, heartArray: [] });
+                  }
+                }>
+                  <Text style={{marginLeft: 10,}}>{item.title}</Text>
+                </TouchableOpacity>
                 )
               }
             />
@@ -310,6 +310,54 @@ export default class AdManangerReachback extends Component {
             </View>
             <View style={{...styles.viewMenu, marginTop: 10, marginBottom: 24}}>
               <Text>Additional options</Text>
+            </View>
+            <View style={styles.viewAdditional}>
+              <Text style={styles.textAdditional}>Location:</Text>
+              <View style={styles.addiContent}>
+                <Text>London SW 1TW</Text>
+                <TouchableOpacity>
+                  <Image style={styles.addiClose} source={R.images.icon_input_delete} />
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity>
+                <Text style={styles.textAddmore}>+ Add more</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.viewAdditional}>
+              <Text style={styles.textAdditional}>Interest:</Text>
+              <View style={styles.addiContent}>
+                <Text>Sneakers</Text>
+                <TouchableOpacity>
+                  <Image style={styles.addiClose} source={R.images.icon_input_delete} />
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity>
+                <Text style={styles.textAddmore}>+ Add more</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.viewAdditional}>
+              <Text style={styles.textAdditional}>Age range:</Text>
+              <View style={styles.addiContent}>
+                <Text>16-20</Text>
+                <TouchableOpacity>
+                  <Image style={styles.addiClose} source={R.images.icon_input_delete} />
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity>
+                <Text style={styles.textAddmore}>+ Add more</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.viewAdditional}>
+              <Text style={styles.textAdditional}>Sex:</Text>
+              <View style={styles.addiContent}>
+                <Text>Male</Text>
+                <TouchableOpacity>
+                  <Image style={styles.addiClose} source={R.images.icon_input_delete} />
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity>
+                <Text style={styles.textAddmore}>+ Add more</Text>
+              </TouchableOpacity>
             </View>
             <TouchableOpacity style={{...styles.btnApply, marginTop: 50,}} onPress={this._onPressLaunch}>
                 <Text style={{color: 'white'}}>Save changes</Text>
