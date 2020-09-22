@@ -21,7 +21,12 @@ import Projects from 'screens/projects';
 import Offers from 'screens/offers';
 import Profile from 'screens/profile';
 
+import AdManagerLoginWith from 'screens/admanager/loginwith'
 import AdManagerLogin from 'screens/admanager/login'
+import AdManagerSignup from 'screens/admanager/signup'
+import AdManagerYamuAds from 'screens/admanager/yamuads'
+import AdManagerYamuAds2 from 'screens/admanager/yamuads2'
+import AdManagerOnboarding from 'screens/admanager/onboarding'
 import AdManagerHome from 'screens/admanager/home'
 import AdManagerShoppingAssistant from 'screens/admanager/shoppingassistant'
 import AdManagerEcoCashback from 'screens/admanager/ecocashback'
@@ -140,7 +145,12 @@ function BrowserStackNavigator() {
       <BrowserStack.Screen name="BrowserView" component={BrowserView} />
       <BrowserStack.Screen name="BrowserIncognitoView" component={BrowserIncognitoView} />
       <BrowserStack.Screen name="BrowserOptions" component={BrowserOptions} />
+      <BrowserStack.Screen name="AdManagerLoginWith" component={AdManagerLoginWith} />
       <BrowserStack.Screen name="AdManagerLogin" component={AdManagerLogin} />
+      <BrowserStack.Screen name="AdManagerSignup" component={AdManagerSignup} />
+      <BrowserStack.Screen name="AdManagerYamuAds" component={AdManagerYamuAds} />
+      <BrowserStack.Screen name="AdManagerYamuAds2" component={AdManagerYamuAds2} />
+      <BrowserStack.Screen name="AdManagerOnboarding" component={AdManagerOnboarding} />
       <BrowserStack.Screen name="AdManagerHome" component={AdManagerHome} />
       <BrowserStack.Screen name="AdManagerShoppingAssistant" component={AdManagerShoppingAssistant} />
       <BrowserStack.Screen name="AdManagerEcoCashback" component={AdManagerEcoCashback} />

@@ -11,7 +11,7 @@ export default StyleSheet.create({
   },
   homeHeader: {
     width: '100%',
-    height: 100,
+    height: 70,
     backgroundColor: '#72C500',
     alignItems: 'center',
     flexDirection: 'row',
@@ -21,7 +21,7 @@ export default StyleSheet.create({
     left: (win.width / 2) - 100,
     width: 200,
     color: 'white',
-    fontSize: 14,
+    fontSize: 18,
     textAlign: 'center',
   },
   imgBack: {

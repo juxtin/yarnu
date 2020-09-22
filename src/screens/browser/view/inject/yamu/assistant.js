@@ -305,7 +305,7 @@ export function jsAddYamuAssistant() {
             "      <div id='divYamuAssistantOffersSignUp' style='display:none;width:90vm; margin: 6vw 5vw 5vw 5vw; padding: 20px; font-size:2.8vw;color white;text-align:center; background-color: white; border-radius: 3vw;'>" +
             "          <p style='margin:5px 0'>Companies we need your love!</p>" +
             "          <p>Join free today and help support local social impact<br/>projects that matter to your customers.</p>" +
-            "          <button style='margin:2.5vw 0;width:23vw;height:7vw;line-height:7.5vw;background:#72c500;color:white;font-size:3vw;border:none;border-radius:1.2vw'>SIGN UP</button>" +
+            "          <button onclick='goToSignUp()' style='margin:2.5vw 0;width:23vw;height:7vw;line-height:7.5vw;background:#72c500;color:white;font-size:3vw;border:none;border-radius:1.2vw'>SIGN UP</button>" +
             "      </div>" +
             "  </div>" +
             "</div>";
@@ -328,6 +328,11 @@ export function jsAddYamuAssistant() {
             onClickYamuAssistantShoppingTab();
           }
       }
+      
+      function goToSignUp() {
+        window.ReactNativeWebView.postMessage(JSON.stringify('signup-click'))
+      }
+
     `;
 
     return jsCode;

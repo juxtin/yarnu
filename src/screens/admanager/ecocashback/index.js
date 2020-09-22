@@ -6,6 +6,8 @@ import GlobalStyles from 'constants/globalstyles';
 import styles from './styles';
 import R from 'res/R';
 
+import CashbackModal from './components/cashbackmodal';
+
 export default class AdManangerEcoCashback extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +22,14 @@ export default class AdManangerEcoCashback extends Component {
       otherTextValue: '1% Cashback',
       trainerArray : [],
       trainerTextValue: 'Trainers',
+      urlArray : [
+        {title: 'www.adidas.com', isAdd: false, },
+        {title: 'www.jdsports.com', isAdd: false, },
+        {title: '', isAdd: true, },
+      ],
+      bTagCode : false,
+      showCashbackModal: false,
+      cashbackDelay : '1 day',
     };
   }
 
@@ -96,6 +106,52 @@ export default class AdManangerEcoCashback extends Component {
     }
   }
 
+  _onPressDelayEdit = () => {
+    this.setState({
+      showCashbackModal: true,
+    })
+  }
+
+  _onPressTagCode = () => {
+    this.setState({
+      bTagCode: !this.state.bTagCode,
+    })
+  }
+  
+  hideModal = () => {
+    this.setState({
+      showCashbackModal: false,
+    });
+  };
+
+  _onPressDelayItem = (index) => {
+    let delay
+    switch (index) {
+      case 0:
+        delay = '1 day'
+        break
+      case 1:
+        delay = '2 days'
+        break
+      case 2:
+        delay = '3 days'
+        break
+      case 3:
+        delay = '4 days'
+        break
+      case 4:
+        delay = '5 days'
+        break
+      default:
+        delay = this.state.cashbackDelay
+        break
+    }
+    this.setState({
+      showCashbackModal: false,
+      cashbackDelay: delay,
+    });
+  }
+
   renderListItem = (item, index) => {
     return (
       <View style={styles.listItem}>
@@ -118,12 +174,31 @@ export default class AdManangerEcoCashback extends Component {
     )
   }
 
+  renderURLListItem = (item, index) => {
+    if (index == this.state.urlArray.length-1) {
+      return (
+        <TouchableOpacity style={{marginLeft: 12, height: 55, justifyContent: 'center',}}>
+          <Image style={{width: 24, height: 24, }} source={R.images.icon_add_black} />
+        </TouchableOpacity>
+      )
+    } else {
+      return (
+        <View style={styles.urlListItem}>
+          <Text style={styles.urlListText}>{item.title}</Text>
+          <TouchableOpacity style={styles.urlListFooterButton}>
+            <Image style={{width: 14, height: 14, }} source={R.images.icon_close_black} />
+          </TouchableOpacity>
+        </View>
+      )
+    }
+  }
+
   render() {
     return (
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <View style={styles.homeHeader}>
           <TouchableOpacity onPress={this._onPressBack}>
-            <Image style={styles.imgBack} width={13} height= {24} source={R.images.icon_leftarrow_black} />
+            <Image style={styles.imgBack} source={R.images.icon_leftarrow_black} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Eco Cashback</Text>
         </View>
@@ -145,7 +220,7 @@ export default class AdManangerEcoCashback extends Component {
                   <TextInput editable={false} style={styles.textInput} value={this.state.textValue}>
                   </TextInput>
                   <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
+                    <Text>Edit</Text>
                   </TouchableOpacity>
                 </View>
               )}
@@ -166,97 +241,58 @@ export default class AdManangerEcoCashback extends Component {
               <Text>Set cashback delay</Text>
             </View>
             <View style={styles.viewDelay}>
-              <Text style={styles.textDelay}>1 day</Text>
-              <Text style={styles.textDelay}>1 week</Text>
-              <Text>4 weeks</Text>
+              <Text style={{flex: 1,}}>{this.state.cashbackDelay}</Text>
+              <TouchableOpacity onPress={this._onPressDelayEdit}>
+                <Text>Edit</Text>
+              </TouchableOpacity>
             </View>
-            <View style={{...styles.viewMenu, marginBottom: 20,}}>
-              <Text>Apply different cashback on</Text>
-            </View>
-            <Autocomplete
-              style={{ zIndex: 100 }} 
-              containerStyle={{...styles.containerStyle, zIndex: 200}}
-              inputContainerStyle={styles.inputContainerStyle}
-              listContainerStyle={styles.listContainerStyle}
-              listStyle={styles.listStyle}
-              data={this.state.trainerArray}
-              renderTextInput={() => (
-                <View style={{flexDirection: 'row',}}>
-                  <TextInput editable={false} style={styles.textInput} value={this.state.trainerTextValue}>
-                  </TextInput>
-                  <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressTrainerDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
-                  </TouchableOpacity>
-                </View>
-              )}
-              renderItem={({ item, index }) => (
-                  <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
-                      this.setState({ trainerTextValue: item.title, trainerArray: [] });
-                    }
-                  }>
-                    <Text style={{marginLeft: 10,}}>{item.title}</Text>
-                  </TouchableOpacity>
-                )
-              }
-            />
-            <Autocomplete
-              style={{ zIndex: 100, }} 
-              containerStyle={{...styles.containerStyle, marginTop: 12,}}
-              inputContainerStyle={styles.inputContainerStyle}
-              listContainerStyle={styles.listContainerStyle}
-              listStyle={styles.listStyle}
-              data={this.state.otherCashbackArray}
-              renderTextInput={() => (
-                <View style={{flexDirection: 'row',}}>
-                  <View style={styles.viewHeart}>
-                    <Image style={styles.imgHeart} source={R.images.icon_heart_white} />
-                  </View>
-                  <TextInput editable={false} style={styles.textInput} value={this.state.otherTextValue}>
-                  </TextInput>
-                  <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressOtherDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
-                  </TouchableOpacity>
-                </View>
-              )}
-              renderItem={({ item, index }) => (
-                  <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
-                      this.setState({ otherTextValue: item.title, otherCashbackArray: [] });
-                    }
-                  }>
-                    <Text style={{marginLeft: 10,}}>{item.title}</Text>
-                  </TouchableOpacity>
-                )
-              }
-            />
-            <View style={{...styles.viewMenu, marginTop: 20,}}>
-              <Text>Set cashback delay</Text>
-            </View>
-            <View style={styles.viewDelay}>
-              <Text style={styles.textDelay}>1 day</Text>
-              <Text style={styles.textDelay}>1 week</Text>
-              <Text>4 weeks</Text>
-            </View>
-            <TouchableOpacity style={styles.button} onPress={this._onPressApply}>
+            <TouchableOpacity style={{...styles.button, marginBottom: 20, }} onPress={this._onPressApply}>
               <Text style={{color: 'white'}}>Apply cashback</Text>
             </TouchableOpacity>
-            <View style={{...styles.viewMenu, marginTop: 20,}}>
+            <View style={styles.viewMenu}>
+              <Text>Add competitor website URLs below</Text>
+            </View>
+            {this.state.urlArray.map((item, index) => this.renderURLListItem(item, index))}
+            <View style={styles.viewMenu}>
               <Text>Add to sale confirmation page</Text>
             </View>
-            <View style={styles.viewDelay}>
-              <Text>www.yamu.track?17uze3ID=8787687687678…</Text>
+            <View style={{...styles.viewDelay, marginBottom: 0,}}>
+              <Text>www.yamu.track?17uze3ID=87876…</Text>
             </View>
             <TouchableOpacity style={styles.button} onPress={this._onPressApply}>
               <Text style={{color: 'white'}}>Copy code</Text>
             </TouchableOpacity>
-            <Text style={{alignSelf: 'center', marginTop: 34, }}>Make a dummy sale to see if the code work</Text>
-            <Text style={{alignSelf: 'center', marginTop: 30, color: '#979797', }}>Tag code pending… </Text>
-            <Text style={{alignSelf: 'center', marginTop: 24, }}>Tag detected and working!</Text>
-            <View style={{...styles.viewMenu, marginTop: 38, marginBottom: 10, }}>
+            <Text style={{alignSelf: 'center', marginTop: 34, textAlign: 'center', }}>Please make a dummy sale{'\n'}to see if the code works</Text>
+            <TouchableOpacity style={this.state.bTagCode ? styles.selectedViewTag : styles.viewTag} onPress={this._onPressTagCode}>
+              <Text style={this.state.bTagCode ? styles.selectedTxtTag : styles.txtTag}>{this.state.bTagCode ? 'Tag code works!' : 'Tag code pending...'}</Text>
+            </TouchableOpacity>
+            <View style={{...styles.viewMenu, marginTop: 20, marginBottom: 10, }}>
               <Text>My cashback campaigns</Text>
             </View>
             {this.state.ecoArray.map((item, index) => this.renderListItem(item, index))}
+            <View style={{...styles.viewMenu, marginTop: 20, marginBottom: 20, }}>
+              <Text>Campaign budget</Text>
+            </View>
+            <View style={styles.budgetWrapper}>
+              <View style={styles.budgetItemWrapper}>
+                <Text style={{flex: 1, marginLeft: 10, color: '#979797', }}>Daily budget</Text>
+                <Image style={{width: 13, height: 10, marginLeft: 10, marginRight: 10,}} source={R.images.icon_downarrow_fullblack} />
+              </View>
+              <View style={styles.budgetItemWrapper}>
+                <Text style={{flex: 1, marginLeft: 10, color: '#979797', }}>£100.00</Text>
+                <Text style={{marginLeft: 10, marginRight: 10, color: '#979797', }}>GBP</Text>
+              </View>
+            </View>
+            <Text style={styles.txtAmount}>Actual amount spend per day may vary</Text>
           </View>
         </ScrollView>
+        {this.state.showCashbackModal ? (
+          <CashbackModal
+            modalVisible={this.state.showCashbackModal}
+            pressHide={() => this.hideModal()}
+            pressDelayItem={(index) => this._onPressDelayItem(index)}
+          />
+        ) : null}
       </SafeAreaView>
     );
   }

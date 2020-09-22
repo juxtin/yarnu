@@ -16,8 +16,8 @@ export default class AdManangerShoppingAssistant extends Component {
       {title: 'Select your e-commerce provider', isSeperator: true, },
       {title: 'Google', isSeperator: false, },
       {title: 'Shopify', isSeperator: false, },
-      {title: 'Big Cartel', isSeperator: false, },
-      {title: 'Upload your catalogue manually', isSeperator: true, },
+      {title: 'BigCommerce', isSeperator: false, },
+      {title: 'Channable', isSeperator: false, },
     ]
 
     this.state = {
@@ -76,7 +76,7 @@ export default class AdManangerShoppingAssistant extends Component {
     });
   };
 
-  _onPressLogin = () => {
+  _onPressAdd = () => {
     this.setState({
       showUpdateModal: false,
     });
@@ -117,33 +117,41 @@ export default class AdManangerShoppingAssistant extends Component {
         <ScrollView style={styles.rootScrollView}>
           <View>
             {this.providerArray.map((item, index) => this.renderProviderItem(item, index))}
-            <Text style={styles.manualDescrption}>1. Download our template{'\n'}2. Add your products{'\n'}3. Upload the filled in template</Text>
-            <TouchableOpacity style={styles.btnDownload} onPress={this._onPressDownload}>
-              <Text style={{color: 'white'}}>DOWNLOAD TEMPLATE</Text>
-            </TouchableOpacity>
-            <View style={{height: 1, marginTop: 24, backgroundColor: '#D8D8D8',}}></View>
-            <View style={styles.viewUpload}>
-              {this.state.uploadStatus == 0 ? (
-                <View style={{alignItems: 'center',}}>
-                  <Text>Upload spreadsheet here</Text>
-                  <Image style={styles.imgUpload} source={R.images.icon_upload_black} />
+            <View style={styles.viewUploadCatalog}>
+              <Text style={styles.txtUploadCatalog}>Upload your catalogue manually</Text>
+            </View>
+            <View style={styles.viewUploadContainer}>
+              <Text style={styles.manualDescrption}>1. Download our template{'\n'}2. Add your products{'\n'}3. Upload the filled in template</Text>
+              <TouchableOpacity style={styles.btnDownload} onPress={this._onPressDownload}>
+                <Text style={{color: 'white'}}>DOWNLOAD TEMPLATE</Text>
+              </TouchableOpacity>
+            </View>
+            {this.state.uploadStatus == 0 ? (
+              <View style={{alignItems: 'center',}}>
+                <Text style={{marginTop: 20,}}>Upload spreadsheet here</Text>
+                <View style={styles.viewUpload}>
+                    <Image style={styles.imgUpload} source={R.images.icon_upload_black} />
                 </View>
-              ) : this.state.uploadStatus == 1 ? (
-                <View style={{alignItems: 'center',}}>
-                  <Text style={styles.failedText}>Oops, something went wrong!{'\n'}Please check your document and try again.</Text>
+              </View>
+            ) : this.state.uploadStatus == 1 ? (
+              <View style={{alignItems: 'center',}}>
+                <Text style={styles.failedText}>Please check your document and try again!</Text>
+                <View style={styles.viewUpload}>
                   <View style={styles.failedImage}>
                     <Image style={{width: 60, height: 60,}} source={R.images.icon_close_red} />
                   </View>
                 </View>
-              ) : this.state.uploadStatus == 2 ? (
-                <View style={{alignItems: 'center',}}>
-                  <Text style={styles.successText}>Well done!{'\n'}Spread sheet successfully uploaded.</Text>
+              </View>
+            ) : this.state.uploadStatus == 2 ? (
+              <View style={{alignItems: 'center',}}>
+                <Text style={styles.successText}>Spread sheet successfully uploaded!</Text>
+                <View style={styles.viewUpload}>
                   <View style={styles.successImage}>
-                    <Image style={{width: 60, height: 60,}} source={R.images.icon_success_green} />
+                  <Image style={{width: 60, height: 60,}} source={R.images.icon_success_green} />
                   </View>
                 </View>
-              ): null}
-            </View>
+              </View>
+            ): null}
             <View style={styles.viewFooter}>
               <TouchableOpacity style={styles.btnLaunch} onPress={this._onPressLaunch}>
                 <Text style={{color: 'white'}}>Launch your shopping assistant</Text>
@@ -169,7 +177,7 @@ export default class AdManangerShoppingAssistant extends Component {
           <UpdateModal
             modalVisible={this.state.showUpdateModal}
             pressHide={() => this.hideModal()}
-            pressLogin={() => this._onPressLogin()}
+            pressAdd={() => this._onPressAdd()}
           />
         ) : null}
       </SafeAreaView>

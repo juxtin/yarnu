@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   homeHeader: {
     width: '100%',
-    height: 100,
+    height: 70,
     backgroundColor: '#72C500',
     alignItems: 'center',
     flexDirection: 'row',
@@ -23,7 +23,7 @@ export default StyleSheet.create({
     left: (win.width / 2) - 100,
     width: 200,
     color: 'white',
-    fontSize: 14,
+    fontSize: 18,
     textAlign: 'center',
   },
   providerItem: {
@@ -53,12 +53,13 @@ export default StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#72C500',
     marginTop: 24,
+    marginBottom: 18,
   },
   viewUpload: {
-    height: 150*ratio,
-    marginLeft: 12,
-    marginRight: 12,
+    width: 100,
+    height: 100,
     marginTop: 24,
+    marginBottom: 30,
     borderRadius: 10,
     borderStyle: 'dashed',
     borderColor: 'black',
@@ -68,7 +69,6 @@ export default StyleSheet.create({
   },
   viewFooter: {
     height: 78,
-    marginTop: 92,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(114,197,0,0.2)',
@@ -82,19 +82,18 @@ export default StyleSheet.create({
     backgroundColor: '#72C500',
   },
   imgUpload: {
-    marginTop: 24,
     width: 30,
     height: 30,
   },
   failedText: {
     color: '#FF4600',
     textAlign: 'center',
+    marginTop: 20,
   },
   failedImage: {
     width: 60,
     height: 60,
     borderRadius: 30,
-    marginTop: 14,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FF4600',
@@ -102,14 +101,27 @@ export default StyleSheet.create({
   successText: {
     color: '#72C500',
     textAlign: 'center',
+    marginTop: 20,
   },
   successImage: {
     width: 60,
     height: 60,
     borderRadius: 30,
-    marginTop: 14,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#72C500',
+  },
+  viewUploadCatalog: {
+    height: 40,
+    backgroundColor: '#72C500',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  txtUploadCatalog: {
+    color: 'white',
+    fontSize: 14,
+  },
+  viewUploadContainer: {
+    backgroundColor: 'rgba(114,197,0,0.2)',
   },
 });

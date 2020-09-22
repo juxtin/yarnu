@@ -20,7 +20,7 @@ export default class AdManagerSurveyFinal extends Component {
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <View style={styles.homeHeader}>
           <TouchableOpacity onPress={this._onPressBack}>
-            <Image style={styles.imgBack} width={13} height= {24} source={R.images.icon_leftarrow_black} />
+            <Image style={styles.imgBack} source={R.images.icon_leftarrow_black} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Survey{'\n'}Final Ad</Text>
         </View>

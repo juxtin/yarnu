@@ -10,20 +10,23 @@ export default StyleSheet.create({
   },
   homeHeader: {
     width: '100%',
-    height: 100,
+    height: 70,
     backgroundColor: '#72C500',
     alignItems: 'center',
     flexDirection: 'row',
   },
   imgBack: {
     marginLeft: 20,
+    width: 13,
+    height: 24,
+    display: 'none',
   },
   headerTitle: {
     position: 'absolute',
     left: (win.width / 2) - 100,
     width: 200,
     color: 'white',
-    fontSize: 14,
+    fontSize: 18,
     textAlign: 'center',
   },
   menuItem: {
@@ -39,6 +42,8 @@ export default StyleSheet.create({
   },
   menuItemArrow: {
     marginRight: 12,
+    width: 13,
+    height: 24,
   },
   campaignItem: {
     flexDirection: 'row',

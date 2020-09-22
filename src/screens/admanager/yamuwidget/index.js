@@ -10,15 +10,14 @@ export default class AdManangerYamuWidget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      surveyArray : [
-        {title: 'Adidas', type: 0, isActive: true, },
-        {title: 'Sneakers', type: 1, isActive: false, },
-      ],
     };
   }
 
   _onPressBack = () => {
     this.props.navigation.goBack();
+  }
+
+  _onPressApply = () => {
   }
 
   render() {
@@ -41,13 +40,13 @@ export default class AdManangerYamuWidget extends Component {
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <View style={styles.homeHeader}>
           <TouchableOpacity onPress={this._onPressBack}>
-            <Image style={styles.imgBack} width={13} height= {24} source={R.images.icon_leftarrow_black} />
+            <Image style={styles.imgBack} source={R.images.icon_leftarrow_black} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Yamu Widget</Text>
         </View>
         <ScrollView style={styles.rootScrollView}>
           <View>
-            <Text style={{marginTop: 30, marginLeft: 22, marginBottom: 35, }}>Add this widget to your social icons on your{'\n'}website to show your support to your users!</Text>
+            <Text style={{marginTop: 30, marginBottom: 35, textAlign: 'center',}}>Add this widget to your social icons{'\n'}on your website to show your{'\n'}support to your users!</Text>
             <View style={styles.chartContainer}>
               <View style={{flex: 1,}}></View>
               <View style={styles.chartWrapper}>
@@ -55,13 +54,15 @@ export default class AdManangerYamuWidget extends Component {
               </View>
               <View style={{flex: 1,}}></View>
               <View style={styles.yamuWrapper}>
-                <Text style={{color: 'white',}}>Yamu</Text>
+                <Text style={{color: 'white', fontSize: 18,}}>Yamu</Text>
               </View>
             </View>
-            <Text style={{marginTop: 40, marginLeft: 22, marginBottom: 10, }}>Copy code</Text>
-            <View style={styles.viewCode}>
+            <View style={{...styles.viewCode, marginTop: 20,}}>
               <Text style={styles.textCode}>{"<"}code{">"}{"\n"}Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.{"\n"}{"<"}/code{">"}</Text>
             </View>
+            <TouchableOpacity style={styles.button} onPress={this._onPressApply}>
+              <Text style={{color: 'white'}}>Copy code</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </SafeAreaView>

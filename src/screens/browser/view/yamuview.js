@@ -101,15 +101,22 @@ class YamuView extends Component {
   // methods
   search = (searchText) => {
     var url = searchText;
+    var url = searchText;
+    var lastExtension= searchText.substring(searchText.length - 4, searchText.length);
+
     if (!searchText.toLowerCase().includes("http://") && !searchText.toLowerCase().includes("https://")) {
-      url = getGoogleSearchAPI(this.props.searchRegion, this.props.safeSearch) + encodeURIComponent(searchText);
+      if (lastExtension === '.com' || lastExtension === '.net' || lastExtension === '.org') {
+        var url = 'http://' + searchText;
+      } else {
+        url = getGoogleSearchAPI(this.props.searchRegion, this.props.safeSearch) + encodeURIComponent(searchText);
+      }
     }
 
     if (url != this.state.url) {
       this.setState({ url: url });
     } else {
       this.reload();
-    }
+    }     
   }
 
   navigateToOffersScreen = () => {
@@ -311,6 +318,10 @@ class YamuView extends Component {
 
   _onWebViewMessage = e => {
     var messagedata = JSON.parse(e.nativeEvent.data);
+    
+    if (messagedata == 'signup-click') {
+      this.props.navigation.navigate('AdManagerLogin');
+    }
 
     this.currentTitle = messagedata.title;
 

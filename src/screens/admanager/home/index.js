@@ -82,11 +82,18 @@ export default class AdManangerHome extends Component {
           <Text style={{...styles.menuItemText, fontWeight: 'bold',}}>{item.menuText}</Text>
         </View>
       )
+    } else if (item.menuText == 'Billing') {
+      return (
+        <TouchableOpacity style={styles.menuItem} onPress={this._onPressMenuItem.bind(this, index)}>
+          <Text style={{...styles.menuItemText, fontWeight: 'bold',}}>{item.menuText}</Text>
+          <Image style={styles.menuItemArrow} source={R.images.icon_rightarrow_black} />
+        </TouchableOpacity>
+      )
     } else {
       return (
         <TouchableOpacity style={styles.menuItem} onPress={this._onPressMenuItem.bind(this, index)}>
           <Text style={styles.menuItemText}>{item.menuText}</Text>
-          <Image style={styles.menuItemArrow} width={13} height= {24} source={R.images.icon_rightarrow_black} />
+          <Image style={styles.menuItemArrow} source={R.images.icon_rightarrow_black} />
         </TouchableOpacity>
       )
     }
@@ -103,9 +110,17 @@ export default class AdManangerHome extends Component {
           <Text style={styles.campaignText}>{item.cashback}</Text>
           <Text style={styles.campaignText}>{item.info}</Text>
         </View>
-        <TouchableOpacity style={styles.campaignFooterButton} onPress={this._onPressCampaignItem.bind(this, index)}>
-          <Text style={styles.menuItemText}>Edit{'\n'}Metrics</Text>
-        </TouchableOpacity>
+        <View style={styles.campaignFooterButton} onPress={this._onPressCampaignItem.bind(this, index)}>
+          <TouchableOpacity style={styles.menuItemText}>
+            <Text style={{textAlign: 'right', }}>Edit</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItemText}>
+            <Text style={{textAlign: 'right', }}>Pause</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItemText}>
+            <Text style={{textAlign: 'right', }}>Delete</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -115,9 +130,9 @@ export default class AdManangerHome extends Component {
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <View style={styles.homeHeader}>
           <TouchableOpacity onPress={this._onPressBack}>
-            <Image style={styles.imgBack} width={13} height= {24} source={R.images.icon_leftarrow_black} />
+            <Image style={styles.imgBack} source={R.images.icon_leftarrow_black} />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Ads Manager</Text>
+          <Text style={styles.headerTitle}>Your Ads Manager</Text>
         </View>
         <ScrollView style={styles.rootScrollView}>
           <View>

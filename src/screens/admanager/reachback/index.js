@@ -10,19 +10,13 @@ export default class AdManangerReachback extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      winkArray : [
-        {title: 'www.adidas.com', isAdd: false, },
-        {title: 'www.jdsports.com', isAdd: false, },
-        {title: '', isAdd: true, },
-      ],
-      cashbackArray : [],
-      textValue: '5% Cashback',
-      trainerArray : [],
-      trainerTextValue: 'Trainers',
-      otherCashbackArray : [],
-      otherTextValue: '1% Cashback',
+      durationArray : [],
+      durationTextValue: '1 day',
+      untilArray : [],
+      untilTextValue: '22 Jul 2020',
       heartArray : [],
       heartTextValue: '1 Heart',
+      urlValue: '',
     };
   }
 
@@ -31,75 +25,6 @@ export default class AdManangerReachback extends Component {
   }
 
   _onPressApply = () => {
-  }
-
-  _onPressDown = () => {
-    this.setState({
-      otherCashbackArray: [],
-      trainerArray : [],
-      heartArray : [],
-    })
-    if (this.state.cashbackArray.length > 0) {
-      this.setState({
-        cashbackArray: [],
-      })
-    } else {
-      this.setState({
-        cashbackArray: [
-          {title: '5% Cashback', },
-          {title: '10% Cashback', },
-          {title: '15% Cashback', },
-          {title: '20% Cashback', },
-          {title: '25% Cashback', },
-        ],
-      })
-    }
-  }
-
-  _onPressOtherDown = () => {
-    this.setState({
-      cashbackArray: [],
-      trainerArray : [],
-      heartArray: [],
-    })
-    if (this.state.otherCashbackArray.length > 0) {
-      this.setState({
-        otherCashbackArray: [],
-      })
-    } else {
-      this.setState({
-        otherCashbackArray: [
-          {title: '1% Cashback', },
-          {title: '2% Cashback', },
-          {title: '3% Cashback', },
-          {title: '4% Cashback', },
-          {title: '5% Cashback', },
-        ],
-      })
-    }
-  }
-
-  _onPressTrainerDown = () => {
-    this.setState({
-      cashbackArray: [],
-      otherCashbackArray: [],
-      heartArray: [],
-    })
-    if (this.state.trainerArray.length > 0) {
-      this.setState({
-        trainerArray: [],
-      })
-    } else {
-      this.setState({
-        trainerArray: [
-          {title: 'Trainers', },
-          {title: 'Trainers 02', },
-          {title: 'Trainers 03', },
-          {title: 'Trainers 04', },
-          {title: 'Trainers 05', },
-        ],
-      })
-    }
   }
 
   _onPressHeartDown = () => {
@@ -125,155 +50,79 @@ export default class AdManangerReachback extends Component {
     }
   }
 
-  renderListItem = (item, index) => {
-    if (index == this.state.winkArray.length-1) {
-      return (
-        <TouchableOpacity style={{marginLeft: 12, height: 55, justifyContent: 'center',}}>
-          <Image style={{width: 24, height: 24, }} source={R.images.icon_add_black} />
-        </TouchableOpacity>
-      )
+  _onPressDurationDown = () => {
+    this.setState({
+      heartArray: [],
+      untilArray: [],
+    })
+    if (this.state.durationArray.length > 0) {
+      this.setState({
+        durationArray: [],
+      })
     } else {
-      return (
-        <View style={styles.listItem}>
-          <Text style={styles.listText}>{item.title}</Text>
-          <TouchableOpacity style={styles.listFooterButton}>
-            <Image style={{width: 14, height: 14, }} source={R.images.icon_close_black} />
-          </TouchableOpacity>
-        </View>
-      )
+      this.setState({
+        durationArray: [
+          {title: '1 day', },
+          {title: '2 days', },
+          {title: '3 days', },
+          {title: '4 days', },
+          {title: '5 days', },
+        ],
+      })
     }
   }
 
+  _onPressUntilDown = () => {
+    this.setState({
+      heartArray: [],
+      durationArray: [],
+    })
+    if (this.state.untilArray.length > 0) {
+      this.setState({
+        untilArray: [],
+      })
+    } else {
+      this.setState({
+        untilArray: [
+          {title: '22 Jul 2020', },
+          {title: '23 Jul 2020', },
+          {title: '24 Jul 2020', },
+          {title: '25 Jul 2020', },
+          {title: '26 Jul 2020', },
+        ],
+      })
+    }
+  }
+  
   render() {
     return (
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <View style={styles.homeHeader}>
           <TouchableOpacity onPress={this._onPressBack}>
-            <Image style={styles.imgBack} width={13} height= {24} source={R.images.icon_leftarrow_black} />
+            <Image style={styles.imgBack} source={R.images.icon_leftarrow_black} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Reach back ad</Text>
         </View>
         <ScrollView style={styles.rootScrollView}>
           <View>
-            <Text style={{marginTop: 24, marginLeft: 12, marginRight: 12, }}>Send a direct communication to those that have visited your competitors sites but not purchased</Text>
-            <View style={{...styles.viewMenu, marginTop: 35, marginBottom: 20,}}>
-              <Text>Across the whole site</Text>
+            <Text style={{marginTop: 24, marginLeft: 40, marginRight: 40, textAlign: 'center',}}>Send an ad to those that have visited your competitor but haven’t purchased</Text>
+            <View style={{...styles.viewMenu, marginTop: 20, }}>
+              <Text>Upload media</Text>
             </View>
-            <Autocomplete
-              style={{ zIndex: 100 }} 
-              containerStyle={{...styles.containerStyle, zIndex: 250}}
-              inputContainerStyle={styles.inputContainerStyle}
-              listContainerStyle={styles.listContainerStyle}
-              listStyle={styles.listStyle}
-              data={this.state.cashbackArray}
-              renderTextInput={() => (
-                <View style={{flexDirection: 'row',}}>
-                  <View style={styles.viewHeart}>
-                    <Image style={styles.imgHeart} source={R.images.icon_heart_white} />
-                  </View>
-                  <TextInput editable={false} style={styles.textInput} value={this.state.textValue}>
-                  </TextInput>
-                  <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
-                  </TouchableOpacity>
-                </View>
-              )}
-              renderItem={({ item, index }) => (
-                <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
-                    this.setState({ textValue: item.title, cashbackArray: [] });
-                  }
-                }>
-                  <Text style={{marginLeft: 10,}}>{item.title}</Text>
-                </TouchableOpacity>
-                )
-              }
-            />
-            <TouchableOpacity style={{...styles.btnCashback, marginTop: 20,}} onPress={this._onPressLaunch}>
-              <Text style={{color: 'white'}}>Apply cashback</Text>
+            <TouchableOpacity style={styles.viewUpload}>
+              <Image style={styles.imgUpload} source={R.images.icon_upload_black} />
             </TouchableOpacity>
-            <View style={{...styles.viewMenu, marginTop: 20, marginBottom: 24,}}>
-              <Text>Apply different cashback on</Text>
+            <Text style={{alignSelf: 'center', }}>Add your campaign url</Text>
+            <View style={styles.viewUrl}>
+              <TextInput style={{width: '100%', paddingLeft: 10, paddingRight: 10, }} value={this.state.urlValue} onChangeText={(value) => this.setState({urlValue : value,})}></TextInput>
             </View>
-            <Autocomplete
-              style={{ zIndex: 100 }} 
-              containerStyle={{...styles.containerStyle, zIndex: 200}}
-              inputContainerStyle={styles.inputContainerStyle}
-              listContainerStyle={styles.listContainerStyle}
-              listStyle={styles.listStyle}
-              data={this.state.trainerArray}
-              renderTextInput={() => (
-                <View style={{flexDirection: 'row',}}>
-                  <TextInput editable={false} style={styles.textInput} value={this.state.trainerTextValue}>
-                  </TextInput>
-                  <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressTrainerDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
-                  </TouchableOpacity>
-                </View>
-              )}
-              renderItem={({ item, index }) => (
-                  <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
-                      this.setState({ trainerTextValue: item.title, trainerArray: [] });
-                    }
-                  }>
-                    <Text style={{marginLeft: 10,}}>{item.title}</Text>
-                  </TouchableOpacity>
-                )
-              }
-            />
-            <Autocomplete
-              style={{ zIndex: 100, }} 
-              containerStyle={{...styles.containerStyle, marginTop: 18,}}
-              inputContainerStyle={styles.inputContainerStyle}
-              listContainerStyle={styles.listContainerStyle}
-              listStyle={styles.listStyle}
-              data={this.state.otherCashbackArray}
-              renderTextInput={() => (
-                <View style={{flexDirection: 'row',}}>
-                  <View style={styles.viewHeart}>
-                    <Image style={styles.imgHeart} source={R.images.icon_heart_white} />
-                  </View>
-                  <TextInput editable={false} style={styles.textInput} value={this.state.otherTextValue}>
-                  </TextInput>
-                  <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressOtherDown}>
-                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
-                  </TouchableOpacity>
-                </View>
-              )}
-              renderItem={({ item, index }) => (
-                <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
-                    this.setState({ otherTextValue: item.title, otherCashbackArray: [] });
-                  }
-                }>
-                  <Text style={{marginLeft: 10,}}>{item.title}</Text>
-                </TouchableOpacity>
-                )
-              }
-            />
-            <TouchableOpacity style={{...styles.btnCashback, marginTop: 20,}} onPress={this._onPressLaunch}>
-              <Text style={{color: 'white'}}>Apply cashback</Text>
-            </TouchableOpacity>
-            <View style={{...styles.viewMenu, marginTop: 20, marginBottom: 24,}}>
-              <Text>Upload your own Ad</Text>
-            </View>
-            <View style={styles.viewUpload}>
-              <View style={{alignItems: 'center',}}>
-                <Text>Upload media here</Text>
-                <Image style={styles.imgUpload} source={R.images.icon_upload_black} />
-              </View>
-            </View>
-            <Text style={{alignSelf: 'center', marginTop: 18,}}>Add your campaign url</Text>
-            <View style={styles.viewUrl}></View>
-            <View style={{...styles.viewMenu, marginTop: 25, marginBottom: 10,}}>
-              <Text>Add competitor website URLs below</Text>
-            </View>
-            {this.state.winkArray.map((item, index) => this.renderListItem(item, index))}
-            <View style={{...styles.viewMenu, marginTop: 10, }}>
+            <View style={styles.viewMenu}>
               <Text>Instant Karma!</Text>
             </View>
-            <Text style={{marginTop: 12, marginLeft: 12, marginRight: 12, }}>Offer a little instant heart payment{'\n'}for each click through</Text>
+            <Text style={{marginTop: 24, marginBottom: 24, marginLeft: 12, marginRight: 12, }}>Offer a little instant heart payment{'\n'}for each purchase</Text>
             <Autocomplete
               style={{ zIndex: 100, }} 
-              containerStyle={{...styles.containerStyle, marginTop: 18,}}
+              containerStyle={styles.containerStyle}
               inputContainerStyle={styles.inputContainerStyle}
               listContainerStyle={styles.listContainerStyle}
               listStyle={styles.listStyle}
@@ -360,11 +209,81 @@ export default class AdManangerReachback extends Component {
               </TouchableOpacity>
             </View>
             <TouchableOpacity style={{...styles.btnApply, marginTop: 50,}} onPress={this._onPressLaunch}>
-                <Text style={{color: 'white'}}>Save changes</Text>
-              </TouchableOpacity>
+              <Text style={{color: 'white'}}>Save changes</Text>
+            </TouchableOpacity>
+            <View style={{...styles.viewMenu, marginTop: 20, marginBottom: 20, }}>
+              <Text>Campaign settings</Text>
+            </View>
+            <Text style={{marginLeft: 15, marginBottom: 20, fontSize: 14,}}>Campaign budget</Text>
+            <View style={styles.budgetWrapper}>
+              <View style={styles.budgetItemWrapper}>
+                <Text style={{flex: 1, marginLeft: 10, color: 'black', }}>Daily budget</Text>
+                <Image style={{width: 13, height: 10, marginLeft: 10, marginRight: 10,}} source={R.images.icon_downarrow_fullblack} />
+              </View>
+              <View style={styles.budgetItemWrapper}>
+                <Text style={{flex: 1, marginLeft: 10, color: 'black', }}>£100.00</Text>
+                <Text style={{marginLeft: 10, marginRight: 10, color: 'black', }}>GBP</Text>
+              </View>
+            </View>
+            <Text style={{marginLeft: 15, marginTop: 5, marginBottom: 10, fontSize: 12,}}>Actual amount spent per day may vary</Text>
+            <Text style={{marginLeft: 15, marginTop: 5, marginBottom: 10, fontSize: 14,}}>Duration</Text>
+            <Autocomplete
+              style={{ zIndex: 100 }} 
+              containerStyle={{...styles.containerStyle, zIndex: 300}}
+              inputContainerStyle={styles.inputContainerStyle}
+              listContainerStyle={styles.listContainerStyle}
+              listStyle={styles.listStyle}
+              data={this.state.durationArray}
+              renderTextInput={() => (
+                <View style={{flexDirection: 'row',}}>
+                  <TextInput editable={false} style={styles.textInput} value={this.state.durationTextValue}>
+                  </TextInput>
+                  <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressDurationDown}>
+                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
+                  </TouchableOpacity>
+                </View>
+              )}
+              renderItem={({ item, index }) => (
+                  <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
+                      this.setState({ durationTextValue: item.title, durationArray: [] });
+                    }
+                  }>
+                    <Text style={{marginLeft: 10,}}>{item.title}</Text>
+                  </TouchableOpacity>
+                )
+              }
+            />
+            <Text style={{marginLeft: 15, marginTop: 15, marginBottom: 10, fontSize: 14,}}>Run this campaign until</Text>
+            <Autocomplete
+              style={{ zIndex: 100 }} 
+              containerStyle={{...styles.containerStyle, zIndex: 200}}
+              inputContainerStyle={styles.inputContainerStyle}
+              listContainerStyle={styles.listContainerStyle}
+              listStyle={styles.listStyle}
+              data={this.state.untilArray}
+              renderTextInput={() => (
+                <View style={{flexDirection: 'row',}}>
+                  <TextInput editable={false} style={styles.textInput} value={this.state.untilTextValue}>
+                  </TextInput>
+                  <TouchableOpacity style={{alignSelf: 'center', marginRight: 12,}} onPress={this._onPressUntilDown}>
+                    <Image style={styles.imgDown} source={R.images.icon_downarrow_fullblack} />
+                  </TouchableOpacity>
+                </View>
+              )}
+              renderItem={({ item, index }) => (
+                  <TouchableOpacity id={index} style={styles.dropdownItem} onPress={() => {
+                      this.setState({ untilTextValue: item.title, untilArray: [] });
+                    }
+                  }>
+                    <Text style={{marginLeft: 10,}}>{item.title}</Text>
+                  </TouchableOpacity>
+                )
+              }
+            />
+            <Text style={{marginLeft: 15, marginTop: 15, marginBottom: 60, fontSize: 14,}}>You will spend a total of £10.00. This campaign{'\n'}will run for 5 days, ending Jul 22, 2020.</Text>
             <View style={styles.viewFooter}>
               <TouchableOpacity style={styles.btnApply} onPress={this._onPressLaunch}>
-                <Text style={{color: 'white'}}>Apply reach back</Text>
+                <Text style={{color: 'white'}}>Launch reach back</Text>
               </TouchableOpacity>
             </View>
           </View>

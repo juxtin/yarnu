@@ -65,7 +65,19 @@ class BrowserHome extends Component {
   navigateToSearchResult = (searchText) => {
     global.selectedTabIndex = -1
     global.addTab = false
-    this.props.navigation.navigate('BrowserView', { searchTerm: searchText });
+    var lastExtension= searchText.substring(searchText.length - 4, searchText.length);
+
+    if (!searchText.toLowerCase().includes("http://") && !searchText.toLowerCase().includes("https://")) {
+      if (lastExtension === '.com' || lastExtension === '.net' || lastExtension === '.org') {
+        var searchURL = 'http://' + searchText;
+      } else {
+        var searchURL = searchText;
+      }
+    } else {
+      var searchURL = searchText;
+    }
+
+    this.props.navigation.navigate('BrowserView', { searchTerm: searchURL });
   }
 
   navigateToOffersScreen = () => {
@@ -92,7 +104,7 @@ class BrowserHome extends Component {
   }
 
   _onPressIllustration = () => {
-    this.props.navigation.navigate('AdManagerLogin');
+    this.props.navigation.navigate('AdManagerLoginWith');
   };
 
   render() {
@@ -120,7 +132,9 @@ class BrowserHome extends Component {
             <View style={{ flex: 26 }}></View>
 
             {(this.state.orientation == 'portrait') ? (
-              <View style={styles.illustrationViewWrapper}><Text>Illustration</Text></View>
+              <TouchableOpacity onPress={this._onPressIllustration}>
+                <View style={styles.illustrationViewWrapper}><Text>Illustration</Text></View>
+              </TouchableOpacity>
             ) : <View style={{ ...styles.illustrationViewWrapper, display: 'none' }}><Text>Illustration</Text></View>}
 
           </View>
