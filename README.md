@@ -7,3 +7,4 @@ This app includes some functions as follows
 - Google Search Engine
 - Webview control
 - Autocomplete
+- Control database using firebase
