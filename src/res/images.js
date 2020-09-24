@@ -30,7 +30,6 @@ const images = {
   icon_refresh_black: require('./images/icon_refresh_black.png'),
   icon_rightarrow_black: require('./images/icon_rightarrow_black.png'),
   icon_rightarrow_gray: require('./images/icon_rightarrow_gray.png'),
-  icon_rightarrowmark_black: require('./images/icon_rightarrowmark_black.png'),
   icon_search_black: require('./images/icon_search_black.png'),
   icon_search_white: require('./images/icon_search_white.png'),
   icon_share: require('./images/icon_share.png'),

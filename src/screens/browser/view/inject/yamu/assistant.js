@@ -310,6 +310,7 @@ export function jsAddYamuAssistant() {
             "  </div>" +
             "</div>";
 
+           
             var templateYamuAssistant = document.createElement('template');
             templateYamuAssistant.innerHTML = assistantHtml;
 
