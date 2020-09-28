@@ -1,0 +1,72 @@
+{
+  "_args": [
+    [
+      "@react-native-firebase/crashlytics@7.1.7",
+      "/Users/Development"
+    ]
+  ],
+  "_from": "@react-native-firebase/crashlytics@7.1.7",
+  "_id": "@react-native-firebase/crashlytics@7.1.7",
+  "_inBundle": false,
+  "_integrity": "sha512-Mao8PfyedZwtaWDu0uy0e83x+wx1WOocgMGL3s4vtHD/gr3EipE8UlwEgK09zfbgNFeE89a4FQNgDWlJmUu1iQ==",
+  "_location": "/@react-native-firebase/crashlytics",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@react-native-firebase/crashlytics@7.1.7",
+    "name": "@react-native-firebase/crashlytics",
+    "escapedName": "@react-native-firebase%2fcrashlytics",
+    "scope": "@react-native-firebase",
+    "rawSpec": "7.1.7",
+    "saveSpec": null,
+    "fetchSpec": "7.1.7"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@react-native-firebase/crashlytics/-/crashlytics-7.1.7.tgz",
+  "_spec": "7.1.7",
+  "_where": "/Users/Development",
+  "author": {
+    "name": "Invertase",
+    "email": "oss@invertase.io",
+    "url": "http://invertase.io"
+  },
+  "dependencies": {
+    "stacktrace-js": "^2.0.0"
+  },
+  "description": "React Native Firebase - Firebase Crashlytics is a lightweight, realtime crash reporter that helps you track, prioritize, and fix stability issues that erode your app quality. React Native Firebase provides automatic crash reporting for both native and JavaScript errors, including unhandled promise rejections.",
+  "gitHead": "ce5fcc5e8560d79943690ee06f6f4a419fc570bf",
+  "keywords": [
+    "react",
+    "react-native",
+    "firebase",
+    "fabric",
+    "crash",
+    "bug",
+    "error",
+    "reporting",
+    "crashlytics"
+  ],
+  "license": "Apache-2.0",
+  "main": "lib/index.js",
+  "name": "@react-native-firebase/crashlytics",
+  "peerDependencies": {
+    "@react-native-firebase/app": "7.3.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/invertase/react-native-firebase/tree/master/packages/crashlytics"
+  },
+  "scripts": {
+    "build": "genversion --semi lib/version.js",
+    "build:clean": "rimraf android/build && rimraf ios/build",
+    "prepare": "yarn run build"
+  },
+  "types": "lib/index.d.ts",
+  "version": "7.1.7"
+}
